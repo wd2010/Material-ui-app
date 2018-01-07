@@ -13,7 +13,7 @@ class Tab extends Component{
         <div style={{color:'red'}}>
           <TabContent />
         </div>
-        <BottomNavigation value={3} onChange={()=>console.log('yyy')} >
+        <BottomNavigation value={3} onChange={()=>console.log('ee')} >
           <BottomNavigationButton label="首页" value="/home" icon={<HomeIcon />} />
           <BottomNavigationButton label="搜索" value="/search" icon={<FavoriteIcon />} />
           <BottomNavigationButton label="关注" value="/like" icon={<SearchIcon />} />

@@ -27,15 +27,15 @@ window.main = () => {
 
 if(process.env.NODE_ENV==='development'){
   if(module.hot){
-    module.hot.accept('./store/reducers/router.js',()=>{
+    module.hot.accept('./store/configureStore.js',()=>{
       let newReducer=require('./store/reducers/index.js');
       store.replaceReducer(newReducer)
       /*import('./store/reducers/router.js').then(({default:module})=>{
         store.replaceReducer(module)
       })*/
     })
-    module.hot.accept('./router.js',()=>{
-      let createApp=require('./createApp');
+    module.hot.accept('./createApp.js',()=>{
+      let createApp=require('./createApp.js');
       let newReducer=require('./store/reducers/index.js');
       store.replaceReducer(newReducer)
       let application=createApp({store,history});

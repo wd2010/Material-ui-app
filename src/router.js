@@ -8,7 +8,7 @@ const Loading=(props)=>
   <div>Loading...</div>
 
 
-const LoadableHome = Loadable({
+const LoadableTab = Loadable({
   loader: () =>import(/* webpackChunkName: 'Tab' */'./components/Tab'),
   loading: Loading,
 });
@@ -22,7 +22,7 @@ const Routers=({isProd=false})=> (
     <Switch>
       <Route path='/user' component={LoadableUser} />
       <Route path='/article' component={LoadableUser} />
-      <Route path='/' component={LoadableHome} />
+      <Route path='/' component={LoadableTab} />
     </Switch>
   </MuiThemeProvider>
 )
