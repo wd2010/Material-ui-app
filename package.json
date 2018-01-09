@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --hotOnly --progress --config ./config/webpack.config.dev.js ",
+    "start": "cross-env NODE_BUILD=client NODE_ENV=development webpack-dev-server --hotOnly --progress --config ./config/webpack.config.dev.js ",
     "build": "cross-env NODE_ENV=production webpack --progress -p --config ./config/webpack.config.prod.js",
-    "server": "cross-env NODE_ENV=production nodemon ./server/index.js --watch config --watch server",
-    "dev:server": "npm run build && npm run server"
+    "server": "cross-env NODE_BUILD=server NODE_ENV=production nodemon ./server/index.js --watch config --watch server",
+    "dev:server": "npm run build && npm run server",
+    "analyzer": "webpack-bundle-analyzer stats.json"
   },
   "author": "",
   "license": "ISC",
@@ -38,6 +39,7 @@
     "npm-run-all": "^4.1.2",
     "postcss-loader": "^2.0.9",
     "progress-bar-webpack-plugin": "^1.10.0",
+    "redux-devtools-extension": "^2.13.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "url-loader": "^0.6.2",
@@ -63,7 +65,7 @@
     "react-redux": "^5.0.6",
     "react-router-config": "^1.0.0-beta.4",
     "react-router-dom": "^4.2.2",
-    "react-router-redux": "^5.0.0-alpha.6",
+    "react-router-redux": "^5.0.0-alpha.8",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   }

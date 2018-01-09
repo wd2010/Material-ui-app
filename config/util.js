@@ -32,19 +32,13 @@ class Demo {
   }
 
   apply(compiler) {
-    compiler.plugin('compilation', (compilation, callback) => {
-      const manifest = buildManifest(compiler, compilation);
-      var json = JSON.stringify(manifest, null, 2);
-      const outputDirectory = path.dirname(this.filename);
-      try {
-        fs.mkdirSync(outputDirectory);
-      } catch (err) {
-        if (err.code !== 'EEXIST') {
-          throw err;
-        }
-      }
-      fs.writeFileSync(this.filename, json);
-      callback();
+    compiler.plugin('compilation', (compilation, data) => {
+      data.normalModuleFactory.plugin('parser', function(parser, options) {
+        parser.plugin('expression import', function(expr) {
+          console.log('---',expr)
+          // you now have a reference to the call expression
+        });
+      });
     });
   }
 }

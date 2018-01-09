@@ -85,7 +85,8 @@ const devConfig={
     new ProgressBarPlugin({summary: false}),
     new ExtractTextPlugin({filename: 'style.[hash].css',}),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV||'development')
+      'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV||'development'),
+      'process.env.NODE_BUILD':JSON.stringify(process.env.NODE_BUILD || 'client')
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name:['vendors','manifest'],

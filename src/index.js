@@ -1,6 +1,6 @@
 import React from 'react';
 import {hydrate,render} from 'react-dom';
-import createHistory from 'history/createBrowserHistory'
+import {createBrowserHistory} from 'history'
 import Loadable from 'react-loadable';
 import createApp from './createApp';
 import configureStore from './store/configureStore';
@@ -8,7 +8,7 @@ import configureStore from './store/configureStore';
 // OfflinePluginRuntime.install();
 
 const initialState =window && window.__INITIAL_STATE__;
-let history=createHistory()
+let history=createBrowserHistory()
 
 let store=configureStore(initialState)
 

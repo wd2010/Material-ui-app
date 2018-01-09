@@ -1,6 +1,6 @@
 import React from 'react';
 import {renderToString} from 'react-dom/server';
-import createHistory from 'history/createMemoryHistory'
+import {createMemoryHistory} from 'history'
 import { getBundles } from 'react-loadable/webpack';
 import stats from '../dist/react-loadable.json';
 import Helmet from 'react-helmet';
@@ -44,7 +44,7 @@ const getMatch=(routesArray, url)=>{
 
 const makeup=(ctx,store,createApp,html)=>{
   let initState=store.getState();
-  let history=createHistory({initialEntries:[ctx.req.url]});
+  let history=createMemoryHistory({initialEntries:[ctx.req.url]});
 
   let modules=[],sheetsCreate=[],materialCss=[];
 

@@ -13,14 +13,13 @@ const prodConfig={
   context: path.join(rootPath,'./src'),
   entry: {
     client:'./index.js',
-    vendors:['react','react-dom','react-loadable','react-redux','redux','react-router-dom','react-router-redux','redux-thunk','material-ui'],
+    vendors:['react','react-dom','react-loadable','react-redux','redux','react-router-dom','react-router-redux','redux-thunk'],
   },
   output:{
     filename:'[name].[hash:8].js',
     path:path.resolve(rootPath,'./dist'),
     publicPath:'/',
     chunkFilename: '[name]-[hash:8].js',
-    // libraryTarget: isServer?'commonjs2':'umd',
   },
   resolve:{
     extensions:[".js",".jsx",".css",".less",".scss",".png",".jpg"],
@@ -36,7 +35,7 @@ const prodConfig={
           loader:'babel-loader',
           options:{
             presets: ['env', 'react', 'stage-0'],
-            plugins: ['transform-runtime', 'add-module-exports',["direct-import", ["material-ui", 'material-ui-icons',]]],
+            plugins: ['transform-runtime', 'add-module-exports',["direct-import", ["material-ui", 'material-ui-icons','history']]],
             cacheDirectory: true,
           }
         }
@@ -88,7 +87,8 @@ const prodConfig={
     new CopyWebpackPlugin([{from:'favicon.ico',to:rootPath+'./dist'}]),
     new CleanWebpackPlugin(['./dist'],{root: rootPath,}),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV)
+      'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV),
+      'process.env.NODE_BUILD':JSON.stringify(process.env.NODE_BUILD || 'client')
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new HtmlWebpackPlugin({

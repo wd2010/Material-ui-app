@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, Switch } from 'react-router-dom';
+import {Route, Switch,withRouter } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import { MuiThemeProvider} from 'material-ui/styles';
 import {theme} from './public/Theme';
@@ -27,4 +27,4 @@ const Routers=({isProd=false})=> (
   </MuiThemeProvider>
 )
 
-export default Routers;
+export default withRouter(Routers);

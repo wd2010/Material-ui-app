@@ -14,6 +14,10 @@ const routesThunk=[{
   thunk: Thunk(getHomeInfo),
   routes:[
     {
+      path:'/',
+      thunk:()=>console.log('服务器端请求home页面数据'),
+    },
+    {
       path:'/home',
       thunk:()=>console.log('服务器端请求home页面数据'),
     },{
