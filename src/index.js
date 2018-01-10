@@ -5,8 +5,6 @@ import Loadable from 'react-loadable';
 import createApp from './createApp';
 import configureStore from './store/configureStore';
 
-
-
 let {store,history}=configureStore()
 
 const renderDom=process.env.NODE_ENV==='production'?hydrate:render;
