@@ -17,8 +17,8 @@ const LoadableUser = Loadable({
   loading: Loading,
 });
 
-const Routers=({isProd=false})=> (
-  <MuiThemeProvider theme={theme} sheetsManager={isProd?(new Map()):null}>
+const Routers=({isServer=false})=> (
+  <MuiThemeProvider theme={theme} sheetsManager={isServer?(new Map()):null}>
     <Switch>
       <Route path='/user' component={LoadableUser} />
       <Route path='/article' component={LoadableUser} />

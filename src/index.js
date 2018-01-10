@@ -4,13 +4,10 @@ import {createBrowserHistory} from 'history'
 import Loadable from 'react-loadable';
 import createApp from './createApp';
 import configureStore from './store/configureStore';
-// import * as OfflinePluginRuntime from 'offline-plugin/runtime';
-// OfflinePluginRuntime.install();
 
-const initialState =window && window.__INITIAL_STATE__;
-let history=createBrowserHistory()
 
-let store=configureStore(initialState)
+
+let {store,history}=configureStore()
 
 const renderDom=process.env.NODE_ENV==='production'?hydrate:render;
 const renderApp=()=>{

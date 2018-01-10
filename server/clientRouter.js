@@ -12,11 +12,6 @@ import configureStore from '../src/store/configureStore';
 import createApp from '../src/createApp';
 import routesThunk from '../src/store/routesThunk';
 
-const createStore=(configureStore)=>{
-  let store=configureStore()
-  return store;
-}
-
 const createTags=(modules)=>{
   let bundles = getBundles(stats, modules);
   let scriptfiles = bundles.filter(bundle => bundle.file.endsWith('.js'));
@@ -72,7 +67,7 @@ const makeup=(ctx,store,createApp,html)=>{
 
 const clientRouter=async(ctx,next)=>{
   let html=fs.readFileSync(path.join(path.resolve(__dirname,'../dist'),'index.html'),'utf-8');
-  let store=createStore(configureStore);
+  let {store}=configureStore();
 
 
   let isMatch=getMatch(routesThunk,ctx.req.url);

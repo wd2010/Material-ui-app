@@ -12,8 +12,8 @@ import createGenerateClassName from 'material-ui/styles/createGenerateClassName'
 
 
 const createApp=({store,history,modules,sheetsCreate=[]})=>{
-  let isProd=process.env.NODE_ENV==='production'
-  if(isProd){
+  let isServer=process.env.NODE_BUILD==='server'
+  if(isServer){
     const jss = create(preset());
     const generateClassName = createGenerateClassName();
     const sheetsRegistry = new SheetsRegistry();
@@ -22,7 +22,7 @@ const createApp=({store,history,modules,sheetsCreate=[]})=>{
         <Provider store={store}>
           <ConnectedRouter history={history}>
             <JssProvider registry={sheetsRegistry} jss={jss} generateClassName={generateClassName}>
-              <Routers isProd={isProd} />
+              <Routers isServer={isServer} />
             </JssProvider>
           </ConnectedRouter>
         </Provider>
