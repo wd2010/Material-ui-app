@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
 import  {BottomNavigation, BottomNavigationAction, withStyles } from 'material-ui';
 import {Home as HomeIcon,Favorite as FavoriteIcon,Search as SearchIcon,Person as PersonIcon} from 'material-ui-icons';
 import {push} from 'react-router-redux';
@@ -15,15 +14,19 @@ class Nav extends Component{
     this.props.dispatch(push(path))
   }
   render(){
-    const {pathname}=this.props;
+    const {selectPath}=this.state;
     let Button=styled(BottomNavigationAction)`
      &&{ 
-      color: ${props=>props.value==pathname?'red':''}
+      color: ${props=>{
+        console.log('yyyyyyy',props.value,selectPath)
+       return (props.value==selectPath||(props.value==='/home' && selectPath==='/'))?'red':''
+      }
+  
      }
     `
     return (
       <div>
-        <BottomNavigation value={this.state.selectPath} onChange={::this.changeRouter} >
+        <BottomNavigation value={this.state.selectPath} showLabels onChange={::this.changeRouter} >
           <Button label="首页" value="/home" icon={<HomeIcon />} />
           <Button label="搜索" value="/search" icon={<FavoriteIcon />} />
           <Button label="关注" value="/like" icon={<SearchIcon />} />
@@ -34,8 +37,6 @@ class Nav extends Component{
   }
 }
 
-const mapStateToProps=(state)=>({
-  pathname: state.router.location.pathname,
-})
+const mapStateToProps=(state)=>({})
 
 export default connect(mapStateToProps)(Nav)

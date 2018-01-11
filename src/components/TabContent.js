@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import {Route, Switch ,Link} from 'react-router-dom';
 import Loadable from 'react-loadable';
-
 const Loading=(props)=>
   <div>Loading...</div>
 

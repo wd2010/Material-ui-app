@@ -3,9 +3,11 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions  from '../store/actions/home';
 import {Link} from 'react-router-dom';
-import {Route, Switch } from 'react-router-dom';
+import {Route, Switch ,withRouter} from 'react-router-dom';
+import { withTheme } from 'styled-components'
+import Model from './Model';
 
-class Home extends Component{
+class Search extends Component{
   state={
     hasError:false,
   }
@@ -20,10 +22,12 @@ class Home extends Component{
     console.log('发送错误',error,info)
   }
   render(){
+
     let {add,count,homeInfo:{name,age}}=this.props;
     return (
       <div>
         <h1>Search页面</h1>
+        <Model />
       </div>
     )
   }
@@ -39,4 +43,4 @@ const mapDispatchToProps=(dispatch)=>bindActionCreators({
   getHomeInfo: actions.getHomeInfo,
 },dispatch)
 
-export default connect(mapStateToProps,mapDispatchToProps)(Home)
+export default withTheme(connect(mapStateToProps,mapDispatchToProps)(Search))

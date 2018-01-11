@@ -13,6 +13,7 @@ import Loadable from 'react-loadable';
 import configureStore from '../src/store/configureStore';
 import routesThunk from '../src/store/routesThunk';
 import Routers from '../src/router';
+import rootReducer from '../src/store/reducers'
 import  {ConnectedRouter}  from 'react-router-redux';
 //提取material-ui样式
 import { SheetsRegistry } from 'react-jss/lib/jss';
@@ -92,7 +93,7 @@ const makeup=(ctx,store,html)=>{
 
 const clientRouter=async(ctx,next)=>{
   let html=fs.readFileSync(path.join(path.resolve(__dirname,'../dist'),'index.html'),'utf-8');
-  let {store}=configureStore();
+  let {store}=configureStore(rootReducer);
 
 
   let isMatch=getMatch(routesThunk,ctx.req.url);

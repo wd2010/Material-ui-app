@@ -2,10 +2,10 @@ import {createStore, applyMiddleware,compose} from "redux";
 import thunkMiddleware from "redux-thunk";
 import {createMemoryHistory,createBrowserHistory} from 'history';
 import { routerMiddleware } from 'react-router-redux'
-import rootReducer from './reducers/index.js';
+
 //浏览器开发工具
 import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
-let configureStore=()=>{
+let configureStore=(rootReducer)=>{
   let initialState = '';
   let history =createMemoryHistory()
   if(process.env.NODE_BUILD==='client'){

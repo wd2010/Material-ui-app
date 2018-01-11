@@ -11,7 +11,7 @@ const getHomeData=()=>async (dispatch,getState)=>{
   await new Promise(resolve=>{
     let homeInfo={name:'wd2010',age:'28'}
     console.log('请求Tab数据')
-    setTimeout(()=>resolve(homeInfo),2000)
+    setTimeout(()=>resolve(homeInfo),0)
   }).then(homeInfo=>{
     dispatch({type:GET_HOME_INFO,data:homeInfo})
   })

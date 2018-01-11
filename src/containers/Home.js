@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as actions  from '../store/actions/home';
 import {Link} from 'react-router-dom';
 import {Route, Switch } from 'react-router-dom';
-import Model from './Model';
+import styled,{ThemeProvider} from 'styled-components';
 class Home extends Component{
   state={
     hasError:false,
@@ -21,14 +21,36 @@ class Home extends Component{
   }
   render(){
     let {add,count,homeInfo:{name,age}}=this.props;
+    const theme=(props)=>{
+      console.log('888',props)
+      return {
+        fg:'#eee',
+        bg:'#333'
+      }
+    }
+    const theme2=(props)=>{
+      console.log(props)
+      return {
+        fg: props.bg,
+        bg: props.fg,
+      }
+    }
+    let Button=styled.button`
+      color: ${props=>props.theme.fg};
+      background: ${props=>props.theme.bg};
+    `
     return (
       <div>
-        <h1>Home页面</h1>
-        <p>{count}</p>
-        <p>名字：{name} - 年龄：{age}</p>
-        <button style={{backgroundColor:'#eee'}} onClick={()=>add(count+1)}>增加</button>
-        <Model />
-        <Link to='/show'>show88</Link>
+        <ThemeProvider theme={theme}>
+          <div>
+            <h1>Home页面</h1>
+            <Button  onClick={()=>add(count+1)}>增加</Button>
+            <ThemeProvider theme={theme2}>
+              <Button>增加12</Button>
+            </ThemeProvider>
+          </div>
+
+        </ThemeProvider>
       </div>
     )
   }
