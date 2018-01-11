@@ -1,4 +1,5 @@
 import React from 'react';
+import {Provider} from 'react-redux';
 import {renderToString} from 'react-dom/server';
 import {createMemoryHistory} from 'history'
 import { getBundles } from 'react-loadable/webpack';
@@ -8,9 +9,19 @@ import {matchPath} from 'react-router-dom';
 import { matchRoutes } from 'react-router-config';
 import path from 'path';
 import fs from 'fs'
+import Loadable from 'react-loadable';
 import configureStore from '../src/store/configureStore';
-import createApp from '../src/createApp';
 import routesThunk from '../src/store/routesThunk';
+import Routers from '../src/router';
+import  {ConnectedRouter}  from 'react-router-redux';
+//提取material-ui样式
+import { SheetsRegistry } from 'react-jss/lib/jss';
+import JssProvider from 'react-jss/lib/JssProvider';
+import { create } from 'jss';
+import preset from 'jss-preset-default';
+import createGenerateClassName from 'material-ui/styles/createGenerateClassName';
+//提取styled-componnets样式
+import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
 
 const createTags=(modules)=>{
   let bundles = getBundles(stats, modules);
@@ -21,10 +32,10 @@ const createTags=(modules)=>{
   return {scripts,styles}
 }
 
-const prepHTML=(data,{html,head,rootString,scripts,styles,initState,materialCss})=>{
+const prepHTML=(data,{html,head,rootString,scripts,styles,initState,materialCss,styleTags})=>{
   data=data.replace('<html',`<html ${html}`);
   data=data.replace('</head>',`${head} \n ${styles}</head>`);
-  data=data.replace('<div id="root"></div>',`<div id="root">${rootString}</div><style id="jss-server-side">${materialCss}</style>`);
+  data=data.replace('<div id="root"></div>',`<div id="root">${rootString}</div><style id="jss-server-side">${materialCss}</style>${styleTags}`);
   data=data.replace('<body>',`<body> \n <script>window.__INITIAL_STATE__ =${JSON.stringify(initState)}</script>`);
   data=data.replace('</body>',`${scripts}</body>`);
   return data;
@@ -37,17 +48,30 @@ const getMatch=(routesArray, url)=>{
   }))
 }
 
-const makeup=(ctx,store,createApp,html)=>{
+const makeup=(ctx,store,html)=>{
   let initState=store.getState();
   let history=createMemoryHistory({initialEntries:[ctx.req.url]});
+  const jss = create(preset());
+  const generateClassName = createGenerateClassName();
+  const sheetsRegistry = new SheetsRegistry();
+  const sheet = new ServerStyleSheet();
 
-  let modules=[],sheetsCreate=[],materialCss=[];
-
-  let rootString= renderToString(createApp({store,history,modules,sheetsCreate}));
-
-  if(sheetsCreate[0]){
-    materialCss=sheetsCreate[0].toString();
-  }
+  let modules=[];
+  let rootString= renderToString(
+    <Loadable.Capture report={moduleName => modules.push(moduleName)}>
+      <StyleSheetManager sheet={sheet.instance}>
+        <Provider store={store}>
+          <ConnectedRouter history={history}>
+            <JssProvider registry={sheetsRegistry} jss={jss} generateClassName={generateClassName}>
+              <Routers isServer={true} />
+            </JssProvider>
+          </ConnectedRouter>
+        </Provider>
+      </StyleSheetManager>
+    </Loadable.Capture>
+  );
+  let materialCss=sheetsRegistry.toString();//Material-ui 基础样式
+  const styleTags = sheet.getStyleTags();//styled-components 样式
 
   let {scripts,styles}=createTags(modules)
 
@@ -60,6 +84,7 @@ const makeup=(ctx,store,createApp,html)=>{
     styles,
     initState,
     materialCss,
+    styleTags
   })
   return renderedHtml;
 }
@@ -78,7 +103,7 @@ const clientRouter=async(ctx,next)=>{
       return route.thunk?(route.thunk(store)):Promise.resolve(null)
     });
     await Promise.all(promises).catch(err=>console.log('err:---',err))
-    let renderedHtml=await makeup(ctx,store,createApp,html);
+    let renderedHtml=await makeup(ctx,store,html);
     ctx.body=renderedHtml
   }
   await next()

@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as actions  from '../store/actions/home';
 import {Link} from 'react-router-dom';
 import {Route, Switch } from 'react-router-dom';
-
+import Model from './Model';
 class Home extends Component{
   state={
     hasError:false,
@@ -27,6 +27,7 @@ class Home extends Component{
         <p>{count}</p>
         <p>名字：{name} - 年龄：{age}</p>
         <button style={{backgroundColor:'#eee'}} onClick={()=>add(count+1)}>增加</button>
+        <Model />
         <Link to='/show'>show88</Link>
       </div>
     )
