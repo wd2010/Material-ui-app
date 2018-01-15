@@ -15,4 +15,4 @@ const Model=(props)=>{
 }
 
 const mapStateToProps=(state)=>({})
-export default connect(mapStateToProps)(withRouter(withTheme(Model)));
+export default connect(mapStateToProps)(withRouter(Model));

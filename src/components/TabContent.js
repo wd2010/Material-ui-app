@@ -22,14 +22,12 @@ const UserCenter = Loadable({
 
 const TabContent=()=>{
   return (
-    <div>
-      <Switch>
-        <Route path='/' component={Home} exact={true} />
-        <Route path='/home' component={Home} />
-        <Route path='/search' component={Search} />
-        <Route path='/usercenter' component={UserCenter} />
-      </Switch>
-    </div>
+    <Switch>
+      <Route path='/' component={Home} exact={true} />
+      <Route path='/home' component={Home} />
+      <Route path='/search' component={Search} />
+      <Route path='/usercenter' component={UserCenter} />
+    </Switch>
   )
 }
 

@@ -43,4 +43,4 @@ const mapDispatchToProps=(dispatch)=>bindActionCreators({
   getHomeInfo: actions.getHomeInfo,
 },dispatch)
 
-export default withTheme(connect(mapStateToProps,mapDispatchToProps)(Search))
+export default connect(mapStateToProps,mapDispatchToProps)(Search)

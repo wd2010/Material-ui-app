@@ -10,7 +10,7 @@ const devConfig={
   context: path.join(rootPath,'./src'),
   entry:{
     client:'./index.js',
-    vendors:['react','react-dom','react-loadable','react-redux','redux','react-router-dom','react-router-redux','redux-thunk','material-ui',],
+    vendors:['react','react-dom','react-loadable','react-redux','redux','react-router-dom','react-router-redux','redux-thunk','material-ui','redux-saga'],
   },
   output:{
     filename:'[name].[hash:8].js',
@@ -25,6 +25,7 @@ const devConfig={
   devServer:{
     contentBase:'assets',
     hot:true,
+    host: '0.0.0.0',
     historyApiFallback:true,
   },
   devtool:'source-map',

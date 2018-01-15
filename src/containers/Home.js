@@ -4,7 +4,10 @@ import {bindActionCreators} from 'redux';
 import * as actions  from '../store/actions/home';
 import {Link} from 'react-router-dom';
 import {Route, Switch } from 'react-router-dom';
-import styled,{ThemeProvider} from 'styled-components';
+import styled from 'styled-components';
+import {Button } from 'material-ui';
+import {Add as AddIcon} from 'material-ui-icons'
+
 class Home extends Component{
   state={
     hasError:false,
@@ -21,37 +24,23 @@ class Home extends Component{
   }
   render(){
     let {add,count,homeInfo:{name,age}}=this.props;
-    const theme=(props)=>{
-      console.log('888',props)
-      return {
-        fg:'#eee',
-        bg:'#333'
+    let HomeContainer=styled.div`
+      position: relative;
+    `
+    let AddBtn=styled(Button)`
+      &&{
+        position: fixed;
+        bottom: 70px;
+        right: 20px;
+        display: block;
       }
-    }
-    const theme2=(props)=>{
-      console.log(props)
-      return {
-        fg: props.bg,
-        bg: props.fg,
-      }
-    }
-    let Button=styled.button`
-      color: ${props=>props.theme.fg};
-      background: ${props=>props.theme.bg};
     `
     return (
-      <div>
-        <ThemeProvider theme={theme}>
-          <div>
-            <h1>Home页面</h1>
-            <Button  onClick={()=>add(count+1)}>增加</Button>
-            <ThemeProvider theme={theme2}>
-              <Button>增加12</Button>
-            </ThemeProvider>
-          </div>
-
-        </ThemeProvider>
-      </div>
+      <HomeContainer>
+        <AddBtn fab mini color="primary" aria-label="add">
+          <AddIcon />
+        </AddBtn>
+      </HomeContainer>
     )
   }
 }
