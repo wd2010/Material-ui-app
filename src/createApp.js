@@ -3,8 +3,6 @@ import {Provider} from 'react-redux';
 import Routers from './router';
 import  {ConnectedRouter}  from 'react-router-redux';
 import RemoveServerSideCss from './public/RemoveServerSideCss';
-
-
 const createApp=({store,history})=>
   <Provider store={store}>
     <ConnectedRouter history={history}>
@@ -13,8 +11,5 @@ const createApp=({store,history})=>
       </RemoveServerSideCss>
     </ConnectedRouter>
   </Provider>
-
-
-
 
 export default createApp;
