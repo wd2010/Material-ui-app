@@ -1,5 +1,5 @@
 import {createStore, applyMiddleware,compose} from "redux";
-import thunkMiddleware from "redux-thunk";
+// import thunkMiddleware from "redux-thunk";
 import createSagaMiddleware from 'redux-saga'
 import {createMemoryHistory,createBrowserHistory} from 'history';
 import { routerMiddleware } from 'react-router-redux';
@@ -19,7 +19,7 @@ let configureStore=(rootReducer)=>{
   const routerReducers=routerMiddleware(history);//路由
   const composeEnhancers =composeWithDevTools;
 
-  const middleware=[sagaMiddleware,routerReducers,thunkMiddleware];
+  const middleware=[sagaMiddleware,routerReducers/*,thunkMiddleware*/];
   let store=createStore(rootReducer,initialState,composeEnhancers(applyMiddleware(...middleware)))
   sagaMiddleware.run(watchIncrementAsync)
   return {

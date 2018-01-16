@@ -23,7 +23,7 @@ class Home extends Component{
     console.log('发送错误',error,info)
   }
   render(){
-    let {add,count,homeInfo:{name,age}}=this.props;
+    let {add,count,addAsync,homeInfo:{name,age}}=this.props;
     let HomeContainer=styled.div`
       position: relative;
     `
@@ -37,7 +37,11 @@ class Home extends Component{
     `
     return (
       <HomeContainer>
-        <AddBtn fab mini color="primary" aria-label="add">
+        <div>
+          <h1>{count}</h1>
+          <Button fab mini onClick={stop}>stop</Button>
+        </div>
+        <AddBtn fab mini color="primary" aria-label="add" onClick={()=>addAsync(count)}>
           <AddIcon />
         </AddBtn>
       </HomeContainer>
@@ -52,6 +56,8 @@ const mapStateToProps=(state)=>({
 
 const mapDispatchToProps=(dispatch)=>bindActionCreators({
   add: actions.add,
+  stop: actions.stop,
+  addAsync: actions.addAsync,
   getHomeInfo: actions.getHomeInfo,
 },dispatch)
 

@@ -1,18 +1,18 @@
-import {ADD,GET_HOME_INFO} from '../constants'
-export const add=(count)=>({type: ADD, count,})
+import {ADD,STOP,ADD_ASYNC,GET_HOME_INFO} from '../constants'
+export const add=(value)=>({
+  type: ADD,
+  count:value+1
+})
 
-export const getHomeInfo=()=>async(dispatch,getState)=>{
-  await dispatch(getHomeData())
+export const stop=()=>({
+  type: STOP
+})
 
-}
-const getHomeData=()=>async (dispatch,getState)=>{
-  let {name,age}=getState().homeInfo;
-  if(name || age)return
-  await new Promise(resolve=>{
-    let homeInfo={name:'wd2010',age:'28'}
-    console.log('请求Tab数据')
-    setTimeout(()=>resolve(homeInfo),0)
-  }).then(homeInfo=>{
-    dispatch({type:GET_HOME_INFO,data:homeInfo})
-  })
-}
+export const getHomeInfo=()=>({
+  type: GET_HOME_INFO,
+})
+
+
+export const addAsync=()=>({
+  type: ADD_ASYNC
+})
