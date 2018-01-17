@@ -23,7 +23,7 @@ class Home extends Component{
     console.log('发送错误',error,info)
   }
   render(){
-    let {add,count,addAsync,homeInfo:{name,age}}=this.props;
+    let {add,count,stop,addAsync,homeInfo:{name,age}}=this.props;
     let HomeContainer=styled.div`
       position: relative;
     `

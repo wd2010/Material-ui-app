@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import {paramData} from '../../util/tools';
+let url='http://blog.tangzuo.cc:5000/api/post';
 
 const request=(url,reqData)=>{
   return Promise.race([

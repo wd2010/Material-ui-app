@@ -1,5 +1,1 @@
-export const getCount=state=>{
-  console.log(state)
-
-  return state.counter.count;
-}
+export const getCount=state=>state.counter.count;

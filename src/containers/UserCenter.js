@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
-
+import Container from '../components/Container';
 const UserCenter=()=>
-  <div>
+  <Container>
     UserCenter
-  </div>
+  </Container>
 
 export default UserCenter;

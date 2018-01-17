@@ -8,19 +8,26 @@ export const delay=(ms)=>new Promise(resolve=>{
 })
 
 export function* incrementAsync() {
-  yield call(delay,2000);
+  yield call(delay,1000);
   let count=yield select(getCount);
   yield put(add(count))
 }
 
 export function* watchIncrementAsync() {
   while(true){
-    let task=yield take(ADD_ASYNC)
-    yield call(incrementAsync)
-    yield take(STOP);
-    yield cancel(task)
+    yield take(ADD_ASYNC)
+    let task=yield fork(incrementAsync);
+    console.log(task.isRunning())
+
+    if(task){
+      yield take(STOP)
+      console.log(task.isCancelled()  )
+      yield cancel(task)
+    }else{
+      return
+    }
+
+
+
   }
-
-
-
 }
