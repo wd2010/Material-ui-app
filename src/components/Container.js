@@ -1,22 +1,20 @@
 import React,{Component} from 'react';
 import styled,{withTheme} from 'styled-components';
+import {getSiblingsH} from '../util/tools';
 
 class Container extends Component{
   state={
-    nextHeight: 0,
+    siblingsH: 0,
   }
   componentDidMount(){
-    let nextSibling=document.getElementById('full').nextSibling;
-    if(nextSibling){
-      this.setState({
-        nextHeight: nextSibling.clientHeight,
-      })
-    }
+    let ele=document.getElementById('full');
+    let siblingsH=getSiblingsH(ele)
+    this.setState({siblingsH})
   }
   render(){
-    let {nextHeight}=this.state;
+    let {siblingsH}=this.state;
     let Full=styled.div`
-      height: calc(100% - ${nextHeight}px );
+      height: calc(100% - ${siblingsH}px );
       overflow-y: auto;
     `
     return (
