@@ -15,7 +15,7 @@ const getAllSiblings=(ele)=>{
   let index=p.indexOf(ele);
   if(~index){
     let prevSiblings=p.slice(0,index);
-    let nextSiblings=p.slice(index+1,p.length-1)
+    let nextSiblings=p.slice(index+1,p.length)
     return {prevSiblings,nextSiblings,parentNode:ele.parentNode};
   }else{
     return {prevSiblings:[],nextSiblings:[]}

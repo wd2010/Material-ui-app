@@ -3,7 +3,14 @@ import {AppBar, Toolbar, Typography, Button, IconButton} from 'material-ui'
 import {Menu as MenuIcon, Search as SearchIcon} from 'material-ui-icons';
 import styled from 'styled-components';
 
-const Title=()=>{
+const Title=({show})=>{
+  let SearchBar=styled(AppBar)`
+    &&{
+      position: relative;
+      top: ${show?'0':'-56px'};
+      transition: top 2s;
+    }
+  `
   let SearchBtn=styled(Button)`
     &&{
       width: 100%;
@@ -16,12 +23,7 @@ const Title=()=>{
       }
     }
   `
-  let SearchBar=styled(AppBar)`
-    &&{
-      position: relative;
-      top: 0;
-    }
-  `
+
   return (
       <SearchBar>
         <Toolbar>

@@ -14,7 +14,7 @@ class Tab extends Component{
     `
     return (
       <TabContainer>
-        <Title />
+        <Title show={true} />
         <Container>
           <TabContent />
         </Container>

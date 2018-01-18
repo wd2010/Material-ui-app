@@ -10,16 +10,7 @@ import {autoPlay } from 'react-swipeable-views-utils';
 let AutoPlaySwipeableViews=autoPlay(SwipeableViews);
 
 class Home extends Component{
-  state={
-    hasError:false,
-  }
 
-
-  componentDidCatch(error, info) {
-    this.setState({ hasError: true });
-    // 在这里可以做异常的上报
-    console.log('发送错误',error,info)
-  }
   render(){
 
     let HomeContainer=styled.div`
@@ -30,76 +21,76 @@ class Home extends Component{
       max-height: 200px;
     `
     return (
-      <HomeContainer>
+      <HomeContainer id='home' >
         <AutoPlaySwipeableViews>
-          <Img src='http://f.hiphotos.baidu.com/image/pic/item/503d269759ee3d6db032f61b48166d224e4ade6e.jpg' />
-          <Img src='http://a.hiphotos.baidu.com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg' />
-          <Img src='http://c.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8765f664b38fa828ba61e4624.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/d6ca7bcb0a46f21f46612acbfd246b600d33aed5.jpg' />
+          <Img src='http://d.hiphotos.baidu.com/image/pic/item/a044ad345982b2b713b5ad7d3aadcbef76099b65.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059f550a1832334349b023bbae3.jpg' />
         </AutoPlaySwipeableViews>
         <AutoPlaySwipeableViews>
-          <Img src='http://f.hiphotos.baidu.com/image/pic/item/503d269759ee3d6db032f61b48166d224e4ade6e.jpg' />
-          <Img src='http://a.hiphotos.baidu.com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg' />
-          <Img src='http://c.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8765f664b38fa828ba61e4624.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/d6ca7bcb0a46f21f46612acbfd246b600d33aed5.jpg' />
+          <Img src='http://d.hiphotos.baidu.com/image/pic/item/a044ad345982b2b713b5ad7d3aadcbef76099b65.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059f550a1832334349b023bbae3.jpg' />
         </AutoPlaySwipeableViews>
         <AutoPlaySwipeableViews>
-          <Img src='http://f.hiphotos.baidu.com/image/pic/item/503d269759ee3d6db032f61b48166d224e4ade6e.jpg' />
-          <Img src='http://a.hiphotos.baidu.com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg' />
-          <Img src='http://c.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8765f664b38fa828ba61e4624.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/d6ca7bcb0a46f21f46612acbfd246b600d33aed5.jpg' />
+          <Img src='http://d.hiphotos.baidu.com/image/pic/item/a044ad345982b2b713b5ad7d3aadcbef76099b65.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059f550a1832334349b023bbae3.jpg' />
         </AutoPlaySwipeableViews>
         <AutoPlaySwipeableViews>
-          <Img src='http://f.hiphotos.baidu.com/image/pic/item/503d269759ee3d6db032f61b48166d224e4ade6e.jpg' />
-          <Img src='http://a.hiphotos.baidu.com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg' />
-          <Img src='http://c.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8765f664b38fa828ba61e4624.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/d6ca7bcb0a46f21f46612acbfd246b600d33aed5.jpg' />
+          <Img src='http://d.hiphotos.baidu.com/image/pic/item/a044ad345982b2b713b5ad7d3aadcbef76099b65.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059f550a1832334349b023bbae3.jpg' />
         </AutoPlaySwipeableViews>
         <AutoPlaySwipeableViews>
-          <Img src='http://f.hiphotos.baidu.com/image/pic/item/503d269759ee3d6db032f61b48166d224e4ade6e.jpg' />
-          <Img src='http://a.hiphotos.baidu.com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg' />
-          <Img src='http://c.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8765f664b38fa828ba61e4624.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/d6ca7bcb0a46f21f46612acbfd246b600d33aed5.jpg' />
+          <Img src='http://d.hiphotos.baidu.com/image/pic/item/a044ad345982b2b713b5ad7d3aadcbef76099b65.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059f550a1832334349b023bbae3.jpg' />
         </AutoPlaySwipeableViews>
         <AutoPlaySwipeableViews>
-          <Img src='http://f.hiphotos.baidu.com/image/pic/item/503d269759ee3d6db032f61b48166d224e4ade6e.jpg' />
-          <Img src='http://a.hiphotos.baidu.com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg' />
-          <Img src='http://c.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8765f664b38fa828ba61e4624.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/d6ca7bcb0a46f21f46612acbfd246b600d33aed5.jpg' />
+          <Img src='http://d.hiphotos.baidu.com/image/pic/item/a044ad345982b2b713b5ad7d3aadcbef76099b65.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059f550a1832334349b023bbae3.jpg' />
         </AutoPlaySwipeableViews>
         <AutoPlaySwipeableViews>
-          <Img src='http://f.hiphotos.baidu.com/image/pic/item/503d269759ee3d6db032f61b48166d224e4ade6e.jpg' />
-          <Img src='http://a.hiphotos.baidu.com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg' />
-          <Img src='http://c.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8765f664b38fa828ba61e4624.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/d6ca7bcb0a46f21f46612acbfd246b600d33aed5.jpg' />
+          <Img src='http://d.hiphotos.baidu.com/image/pic/item/a044ad345982b2b713b5ad7d3aadcbef76099b65.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059f550a1832334349b023bbae3.jpg' />
         </AutoPlaySwipeableViews>
         <AutoPlaySwipeableViews>
-          <Img src='http://f.hiphotos.baidu.com/image/pic/item/503d269759ee3d6db032f61b48166d224e4ade6e.jpg' />
-          <Img src='http://a.hiphotos.baidu.com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg' />
-          <Img src='http://c.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8765f664b38fa828ba61e4624.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/d6ca7bcb0a46f21f46612acbfd246b600d33aed5.jpg' />
+          <Img src='http://d.hiphotos.baidu.com/image/pic/item/a044ad345982b2b713b5ad7d3aadcbef76099b65.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059f550a1832334349b023bbae3.jpg' />
         </AutoPlaySwipeableViews>
         <AutoPlaySwipeableViews>
-          <Img src='http://f.hiphotos.baidu.com/image/pic/item/503d269759ee3d6db032f61b48166d224e4ade6e.jpg' />
-          <Img src='http://a.hiphotos.baidu.com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg' />
-          <Img src='http://c.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8765f664b38fa828ba61e4624.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/d6ca7bcb0a46f21f46612acbfd246b600d33aed5.jpg' />
+          <Img src='http://d.hiphotos.baidu.com/image/pic/item/a044ad345982b2b713b5ad7d3aadcbef76099b65.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059f550a1832334349b023bbae3.jpg' />
         </AutoPlaySwipeableViews>
         <AutoPlaySwipeableViews>
-          <Img src='http://f.hiphotos.baidu.com/image/pic/item/503d269759ee3d6db032f61b48166d224e4ade6e.jpg' />
-          <Img src='http://a.hiphotos.baidu.com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg' />
-          <Img src='http://c.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8765f664b38fa828ba61e4624.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/d6ca7bcb0a46f21f46612acbfd246b600d33aed5.jpg' />
+          <Img src='http://d.hiphotos.baidu.com/image/pic/item/a044ad345982b2b713b5ad7d3aadcbef76099b65.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059f550a1832334349b023bbae3.jpg' />
         </AutoPlaySwipeableViews>
         <AutoPlaySwipeableViews>
-          <Img src='http://f.hiphotos.baidu.com/image/pic/item/503d269759ee3d6db032f61b48166d224e4ade6e.jpg' />
-          <Img src='http://a.hiphotos.baidu.com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg' />
-          <Img src='http://c.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8765f664b38fa828ba61e4624.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/d6ca7bcb0a46f21f46612acbfd246b600d33aed5.jpg' />
+          <Img src='http://d.hiphotos.baidu.com/image/pic/item/a044ad345982b2b713b5ad7d3aadcbef76099b65.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059f550a1832334349b023bbae3.jpg' />
         </AutoPlaySwipeableViews>
         <AutoPlaySwipeableViews>
-          <Img src='http://f.hiphotos.baidu.com/image/pic/item/503d269759ee3d6db032f61b48166d224e4ade6e.jpg' />
-          <Img src='http://a.hiphotos.baidu.com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg' />
-          <Img src='http://c.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8765f664b38fa828ba61e4624.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/d6ca7bcb0a46f21f46612acbfd246b600d33aed5.jpg' />
+          <Img src='http://d.hiphotos.baidu.com/image/pic/item/a044ad345982b2b713b5ad7d3aadcbef76099b65.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059f550a1832334349b023bbae3.jpg' />
         </AutoPlaySwipeableViews>
         <AutoPlaySwipeableViews>
-          <Img src='http://f.hiphotos.baidu.com/image/pic/item/503d269759ee3d6db032f61b48166d224e4ade6e.jpg' />
-          <Img src='http://a.hiphotos.baidu.com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg' />
-          <Img src='http://c.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8765f664b38fa828ba61e4624.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/d6ca7bcb0a46f21f46612acbfd246b600d33aed5.jpg' />
+          <Img src='http://d.hiphotos.baidu.com/image/pic/item/a044ad345982b2b713b5ad7d3aadcbef76099b65.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059f550a1832334349b023bbae3.jpg' />
         </AutoPlaySwipeableViews>
         <AutoPlaySwipeableViews>
-          <Img src='http://f.hiphotos.baidu.com/image/pic/item/503d269759ee3d6db032f61b48166d224e4ade6e.jpg' />
-          <Img src='http://a.hiphotos.baidu.com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg' />
-          <Img src='http://c.hiphotos.baidu.com/image/pic/item/cdbf6c81800a19d8765f664b38fa828ba61e4624.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/d6ca7bcb0a46f21f46612acbfd246b600d33aed5.jpg' />
+          <Img src='http://d.hiphotos.baidu.com/image/pic/item/a044ad345982b2b713b5ad7d3aadcbef76099b65.jpg' />
+          <Img src='http://a.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059f550a1832334349b023bbae3.jpg' />
         </AutoPlaySwipeableViews>
       </HomeContainer>
     )
