@@ -8,13 +8,10 @@ import styled from 'styled-components';
 class Tab extends Component{
 
   render(){
-    let TabContainer=styled.div`
-      height: 100%;
-      position: relative;
-    `
+    let TabContainer=styled.div``
     return (
-      <TabContainer>
-        <Title show={true} />
+      <TabContainer >
+        <Title />
         <Container>
           <TabContent />
         </Container>
