@@ -13,3 +13,17 @@ export const getScrollDirection=({position})=>(dispatch,getState)=>{
   dispatch({type: GET_SCROLL_DIRECTION, title_show, menu_show,})
   dispatch({type: SET_SCROLL_POSITION,position})
 }
+
+export const getScrollDetail=({currentPosition,nextPosition})=>(dispatch,getState)=>{
+
+  let {Scroll:{direction:preDirection,ends:preEnds}}=getState();
+  let nextDirection=nextPosition-currentPosition>=0?2:1;
+  let nextEnds=nextPosition===0?'top':'';
+  if(nextDirection!==preDirection || nextEnds!==preEnds){
+    dispatch({
+      type: GET_SCROLL_DIRECTION,
+      direction: nextDirection,
+      ends: nextEnds,
+    })
+  }
+}

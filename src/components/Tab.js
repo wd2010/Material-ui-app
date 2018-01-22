@@ -1,25 +1,26 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import TabContent from './TabContent';
 import Nav from './Nav';
 import Title from './Title';
 import Container from './Container';
-import styled from 'styled-components';
+import styled,{withTheme} from 'styled-components';
+import Scroll from './Scroll';
 
-class Tab extends Component{
+class Tab extends Component {
 
-  render(){
-    let TabContainer=styled.div``
+  render() {
+    let TabContainer = styled.div``
     return (
-      <TabContainer >
-        <Title />
-        <Container>
-          <TabContent />
-        </Container>
-        <Nav />
+      <TabContainer>
+        <Container><Title/></Container>
+        <TabContent/>
+        <Container><Nav/></Container>
+        <Scroll />
       </TabContainer>
     )
   }
 }
+
 
 
 export default Tab

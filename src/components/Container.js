@@ -1,58 +1,41 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import styled,{withTheme} from 'styled-components';
-import {getSiblingsH,debounce} from '../util/tools';
-import * as actions from '../store/actions/Config';
+import styled, {withTheme} from 'styled-components';
+import {getChildrenH} from '../util/tools';
+import * as actions from '../store/actions/Scroll';
 
-class Container extends Component{
-  constructor(props){
+class Container extends Component {
+  constructor(props) {
     super(props)
-    this.state={
-      prevSiblingsH:0,
-      nextSiblingsH:0,
+    this.state = {
+      childH: 0,
     }
-    this.handleScroll=this.handleScroll.bind(this)
   }
 
-  componentDidMount(){
-    let ele=document.getElementById('full');
-    let {prevSiblingsH,nextSiblingsH}=getSiblingsH(ele);
-    this.setState({prevSiblingsH,nextSiblingsH});
-    //window.addEventListener('scroll',this.handleScroll,false)
+  componentDidMount() {
+    let ele = document.getElementById('container');
+    let childH= getChildrenH(ele);
+    this.setState({childH});
   }
 
-  //componentWillUnmount(){
-  //  window.removeEventListener('scroll',this.handleScroll)
-  //}
 
-  handleScroll(e){
-    e.stopPropagation()
-    console.log(this.props)
-    let scrollPostion=e.target.scrollTop;//滚动条位置
-    debugger
-    this.props.getScrollDirectionAct({position:scrollPostion})
-  }
-
-  render(){
-    let {prevSiblingsH,nextSiblingsH}=this.state;
-    let Container=styled.div`
-      padding-top: ${prevSiblingsH}px;
-      padding-bottom: ${nextSiblingsH}px;
-      height: 800px;
-      overflow-y: scroll;
+  render() {
+    let {childH} = this.state;
+    let Container = styled.div`
+      height: ${childH+10}px;
     `
     return (
-      <Container id='full' onScroll={()=>console.log('yyy')} >
+      <Container id='container'>
         {this.props.children}
       </Container>
     )
   }
 }
 
-const mapStateToProps=(state)=>({})
-const mapDispatchToProps=(dispatch)=>bindActionCreators({
+const mapStateToProps = (state) => ({})
+const mapDispatchToProps = (dispatch) => bindActionCreators({
   getScrollDirectionAct: actions.getScrollDirection,
-},dispatch)
+}, dispatch)
 
-export default connect(mapStateToProps,mapDispatchToProps)(withTheme(Container))
+export default connect(mapStateToProps, mapDispatchToProps)(withTheme(Container))
