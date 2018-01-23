@@ -36,10 +36,18 @@ export const getSiblingsH=(ele)=>{
   return {prevSiblingsH,nextSiblingsH};
 }
 //获取一元素子元素的高度
-export const getChildrenH=(ele)=>{
+export const getChildrenH=(ele,type)=>{
+  let offsetH=0;
   let childDom=ele.firstChild;
-  let childH=childDom.offsetHeight+childDom.offsetTop;
-  return childH
+  let childrenH=childDom.offsetHeight || 0;
+  if(type==='title'){
+    let childChildren=childDom.childNodes;
+    if(childChildren.length>1){
+      let lastButOne=childChildren[childChildren.length-2];
+      offsetH=lastButOne.offsetTop+lastButOne.offsetHeight;
+    }
+  }
+  return {childrenH,offsetH}
 }
 //防抖动
 /*export const debounce=({ms,func,interval})=>{
