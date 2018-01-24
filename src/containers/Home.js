@@ -7,8 +7,6 @@ import styled from 'styled-components';
 import {Button } from 'material-ui';
 import SwipeableViews from 'react-swipeable-views';
 import {autoPlay } from 'react-swipeable-views-utils';
-import Title from '../components/Title';
-import Container from '../components/Container';
 
 let AutoPlaySwipeableViews=autoPlay(SwipeableViews);
 let HomeContainer=styled.div``
@@ -22,13 +20,9 @@ class Home extends Component{
 
   render(){
 
-    let {titleDirection,direction}=this.props.Scroll;
-    let hide=titleDirection?false:(direction==1?false:true)
     return (
       <HomeContainer >
-        <Container type='title' hide={hide}>
-          <Title />
-        </Container>
+
         <div>
           <AutoPlaySwipeableViews>
             <Img src='http://a.hiphotos.baidu.com/image/pic/item/d6ca7bcb0a46f21f46612acbfd246b600d33aed5.jpg' />
@@ -96,12 +90,5 @@ class Home extends Component{
   }
 }
 
-const mapStateToProps=(state)=>({
-  Scroll: state.Scroll,
-})
 
-const mapDispatchToProps=(dispatch)=>bindActionCreators({
-
-},dispatch)
-
-export default connect(mapStateToProps,mapDispatchToProps)(Home)
+export default Home

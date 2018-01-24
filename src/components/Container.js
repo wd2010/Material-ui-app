@@ -23,12 +23,14 @@ class Container extends Component {
     let {type,setScrollCacheHAct}=this.props;
     let ele = document.getElementById('container');
     let {childrenH,offsetH}= getChildrenH(ele,type);
-    console.log(type,childrenH,offsetH);
     this.setState({
       childrenH,
       offsetH,
       Container:styled.div`
         height: ${childrenH+10}px;
+        >div{
+          position: fixed;
+        }
       `
     });
     if(type==='title'){
@@ -40,7 +42,7 @@ class Container extends Component {
     let {childrenH,offsetH,childAnimation,Container} = this.state;
     let {type,children,hide}=this.props;
     let hideH=hide?`-${offsetH?offsetH:childrenH}px`:0;
-    let childStyle=Object.assign({},childAnimation,{'top': type==='title'?hideH:'','buttom': type==='menu'?hideH:''})
+    let childStyle=Object.assign({},childAnimation,{'top': type==='title'?hideH:'','bottom': type==='menu'?hideH:''})
     return (
       <Container id='container'>
         {React.cloneElement(children,

@@ -3,7 +3,6 @@ import {AppBar, Toolbar, Typography, Button, IconButton} from 'material-ui'
 import {Menu as MenuIcon, Search as SearchIcon} from 'material-ui-icons';
 import styled from 'styled-components';
 let SearchBar=styled(AppBar)`
-    position: fixed;
   `
 let SearchBtn=styled(Button)`
     &&{
@@ -17,15 +16,18 @@ let SearchBtn=styled(Button)`
       }
     }
   `
-const Title=({style})=>{
-
+let SearchSize=styled.span`
+  font-size: 16px;
+  margin-left: 10px;
+`
+const SearchTitle=({style})=>{
   return (
     <SearchBar style={style}>
       <Toolbar>
-        <SearchBtn fullwidth='true' color="contrast"><SearchIcon /></SearchBtn>
+        <SearchBtn fullwidth='true' color="contrast"><SearchIcon /><SearchSize>搜索</SearchSize></SearchBtn>
       </Toolbar>
     </SearchBar>
   )
 }
 
-export default Title;
+export default SearchTitle;

@@ -8,36 +8,44 @@ class Scroll extends Component {
   constructor(props) {
     super(props)
     this.state={
-      currentPosition:0,
+      currentPosition:null,
     }
-    this.handleScroll = throttle(this.handleScroll.bind(this), 100, {trailing: true})
+    this.handleScroll = throttle(this.handleScroll.bind(this), 200, {trailing: true})
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(this.props.pathname!==nextProps.pathname){
+      this.props.clearScrollAct()
+    }
   }
 
   handleScroll() {
     let {currentPosition}=this.state;
-    let {ends,cacheH,direction,titleDirection} =this.props;
+    let {ends,cacheH,titleDirection} =this.props;
     let nextPosition = document.documentElement.scrollTop;
     let documentTotalH=document.documentElement.scrollHeight;
     let clientH=document.documentElement.clientHeight;
 
-    if(nextPosition<cacheH && currentPosition<cacheH ){
-      if(titleDirection!==true){
-        this.props.setTitleDirectionAct({titleDirection:true})
+    if(currentPosition!=null){
+      if(nextPosition<cacheH && currentPosition<cacheH ){
+        if(titleDirection!==true){
+          this.props.setTitleDirectionAct({titleDirection:true})
+        }
+      }else{
+        if(titleDirection!==false){
+          this.props.setTitleDirectionAct({titleDirection:false})
+        }
       }
-    }else{
-      if(titleDirection!==false){
-        this.props.setTitleDirectionAct({titleDirection:false})
+      if(Math.abs(nextPosition-currentPosition) >5){
+        this.props.getScrollDetailAct({currentPosition,nextPosition})
       }
-    }
-    if(Math.abs(nextPosition-currentPosition) >5){
-      this.props.getScrollDetailAct({currentPosition,nextPosition})
-    }
-    if(nextPosition===0 && ends!=='top' ){
-      this.props.setScrollEndsAct({ends:'top'})
-    }else if(documentTotalH-(nextPosition+clientH)<10 && ends!=='buttom'){
-      this.props.setScrollEndsAct({ends:'buttom'})
-    }else if(nextPosition>0 && ends!==''){
-      this.props.setScrollEndsAct({ends:''})
+      if(nextPosition===0 && ends!=='top' ){
+        this.props.setScrollEndsAct({ends:'top'})
+      }else if(documentTotalH-(nextPosition+clientH)<10 && ends!=='buttom'){
+        this.props.setScrollEndsAct({ends:'buttom'})
+      }else if(nextPosition>0 && ends!==''){
+        this.props.setScrollEndsAct({ends:''})
+      }
     }
 
     this.setState({currentPosition:nextPosition})
@@ -52,7 +60,7 @@ class Scroll extends Component {
   }
 
   render() {
-    return false
+    return null
   }
 }
 
@@ -61,12 +69,14 @@ const mapStateToProps = (state) => ({
   cacheH: state.Scroll.cacheH,
   direction: state.Scroll.direction,
   titleDirection: state.Scroll.titleDirection,
+  pathname: state.router.location.pathname,
 })
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   getScrollDetailAct: actions.getScrollDetail,
   setScrollEndsAct : actions.setScrollEnds,
   setScrollDirectionAct : actions.setScrollDirection,
   setTitleDirectionAct : actions.setTitleDirection,
+  clearScrollAct: actions.clearScroll,
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Scroll)

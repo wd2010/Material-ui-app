@@ -1,7 +1,7 @@
-import {SET_SCROLL_DIRECTION, SET_SCROLL_ENDS,SET_SCROLL_CACHE_H,SET_TITLE_DIRECTION} from '../constants';
+import {SET_SCROLL_DIRECTION, SET_SCROLL_ENDS,SET_SCROLL_CACHE_H,SET_TITLE_DIRECTION,CLEAR_SCROLL} from '../constants';
 
 const initScrollState = {
-  titleDirection:true,//1向上，2向下
+  titleDirection:true,//true处于title缓冲区内，不需要隐藏
   direction: 0,//1向上，2向下
   ends: 'top',//'top','','buttom'
   cacheH:0,
@@ -16,7 +16,9 @@ export const Scroll = (state = initScrollState, action) => {
     case SET_SCROLL_ENDS:
       return Object.assign({}, state, {ends: action.ends});
     case SET_SCROLL_CACHE_H:
-      return Object.assign({},state,{cacheH:action.cacheH})
+      return Object.assign({},state,{cacheH:action.cacheH});
+    case CLEAR_SCROLL:
+      return initScrollState;
     default:
       return state;
   }

@@ -7,4 +7,5 @@ export const SET_SCROLL_CACHE_H='SET_SCROLL_CACHE_H';//设置滚动条缓冲区
 export const SET_SCROLL_ENDS='SET_SCROLL_ENDS';//获取滚动条ends位置
 export const SET_SCROLL_DIRECTION='SET_SCROLL_DIRECTION';//获取滚动条方向
 export const SET_TITLE_DIRECTION='SET_TITLE_DIRECTION';//设置滚动条title缓冲区
+export const CLEAR_SCROLL='CLEAR_SCROLL';//初始化滚动条
 

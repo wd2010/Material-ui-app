@@ -1,8 +1,8 @@
-import {SET_SCROLL_ENDS,SET_SCROLL_CACHE_H,SET_SCROLL_DIRECTION,SET_TITLE_DIRECTION} from '../constants';
+import {SET_SCROLL_ENDS,SET_SCROLL_CACHE_H,SET_SCROLL_DIRECTION,SET_TITLE_DIRECTION,CLEAR_SCROLL} from '../constants';
 
 export const getScrollDetail=({currentPosition,nextPosition})=>(dispatch,getState)=>{
   let {Scroll:{direction:preDirection}}=getState();
-  let nextDirection=nextPosition-currentPosition>=0?2:1;
+  let nextDirection=nextPosition-currentPosition>0?2:1;
 
   if(nextDirection!==preDirection ){
     dispatch({
@@ -26,3 +26,5 @@ export const setScrollCacheH=({cacheH})=>({
   type: SET_SCROLL_CACHE_H,
   cacheH,
 })
+
+export const clearScroll=()=>({type: CLEAR_SCROLL})
