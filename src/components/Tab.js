@@ -6,7 +6,8 @@ import Scroll from './Scroll';
 import Container from './Container';
 import Title from './Title/Index';
 import Nav from './Nav';
-import {createSelector} from 'reselect'
+import {createSelector} from 'reselect';
+
 const Tab =({titleHide,navHide,titleType})=>{
   return (
     <div>
@@ -33,6 +34,8 @@ const scrollSelector=createSelector([
     case '/post':
     case '/usercenter':
       return {titleHide:false,navHide:false,titleType:'search'};
+    case '/theme':
+      return {titleHide:false,navHide:true,titleType:'return'}
 
     case '/user':
       return {
@@ -40,6 +43,7 @@ const scrollSelector=createSelector([
         navHide: direction==2?true:false,
         titleType:'usercenter'
       }
+
     default:
       return {titleHide:false,navHide:false,titleType:'search'};
   }

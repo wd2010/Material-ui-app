@@ -17,6 +17,10 @@ const UserCenter = Loadable({
   loader: () =>import(/* webpackChunkName: 'UserCenter' */'../containers/UserCenter'),
   loading: Loading,
 });
+const Theme = Loadable({
+  loader: () =>import(/* webpackChunkName: 'Theme' */'../containers/Theme'),
+  loading: Loading,
+});
 
 const TabContent=()=>{
   return (
@@ -25,6 +29,7 @@ const TabContent=()=>{
       <Route path='/home' component={Home} />
       <Route path='/post' component={PostList} />
       <Route path='/usercenter' component={UserCenter} />
+      <Route path='/theme' component={Theme} />
     </Switch>
   )
 }

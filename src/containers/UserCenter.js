@@ -1,60 +1,73 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import styled,{withTheme} from 'styled-components'
+import {withRouter} from 'react-router-dom';
+import styled from 'styled-components'
 import {List, ListItem, ListItemText,Avatar, Divider, ListItemIcon , Switch } from 'material-ui';
-import {Menu as MenuIcon, Brightness5 as DayIcon, Brightness4 as NightIcon} from 'material-ui-icons';
-const UserList=styled(List)`
-  &&{
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  padding: 0;
-  margin-bottom: 5px;
-  background: ${props=>props.theme.palette.background.contentFrame}
-  }
-`
+import {Brush as ThemeIcon, Brightness5 as DayIcon, Brightness4 as NightIcon} from 'material-ui-icons';
+import * as actions from '../store/actions/Config';
+import {createSelector} from 'reselect';
+
+const UserList = styled(List)`
+    &&{
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      padding: 0;
+      margin-bottom: 5px;
+      background: ${props => props.theme.palette.background.contentFrame};
+    }
+  `
 const AvatarHead=styled(Avatar)`
   width: 60;
   height:60;
 `
 const UserContainer=styled.div`
+  padding-top: 5px;
+  padding-bottom: 5px;
   background: ${props=>props.theme.palette.background.page}
 `
 class UserCenter extends Component{
-
-  handleSwitchTheme(e){
-    e.stopPropagation()
-    console.log('yyy',e.target)
+  //白天黑夜模式
+  handleSwitchMode({value}){
+    if((typeof value)!== 'undefined'){
+      this.props.SwitchThemeAct({value})
+    }
   }
-
+  //选择主题
+  handleSelectTheme(){
+    let {history}=this.props;
+    history.push('/theme')
+  }
   render(){
-
+    let {checked}=this.props;
     return (
       <UserContainer>
-        <UserList>
+        <UserList >
           <ListItem button>
             <AvatarHead alt="wd2010" src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1516783928&di=5993104b0e8f5060411f270d91b710da&src=http://wenwen.soso.com/p/20110627/20110627184931-1448979489.jpg" />
             <ListItemText primary="wd2010" secondary="查看或编辑个人主页" />
           </ListItem>
         </UserList>
         <UserList >
-          <ListItem button onClick={::this.handleSwitchTheme}>
-            <ListItemIcon>
-              <DayIcon />
-            </ListItemIcon>
-            <ListItemText primary="夜间模式"  />
+          <ListItem button onClick={()=>this.handleSwitchMode({value: !checked})}>
+            { checked ?
+              (<ListItemIcon><NightIcon /></ListItemIcon>):
+              (<ListItemIcon><DayIcon /></ListItemIcon>)
+            }
+            <ListItemText primary={`${checked?'夜间模式':'白天模式'}`}   />
             <Switch
-              checked={true}
-              onChange={::this.handleSwitchTheme}
+              style={{height:'21px'}}
+              checked={checked}
+              onChange={(e,value)=>this.handleSwitchMode({value})}
               aria-label="夜间模式"
             />
           </ListItem>
           <Divider inset />
-          <ListItem button>
+          <ListItem button onClick={::this.handleSelectTheme}>
             <ListItemIcon>
-              <NightIcon />
+              <ThemeIcon />
             </ListItemIcon>
-            <ListItemText primary="Inbox" />
+            <ListItemText primary="主题选择"  />
           </ListItem>
         </UserList>
       </UserContainer>
@@ -63,6 +76,18 @@ class UserCenter extends Component{
 
 }
 
+const switchSelector=createSelector([
+  state=>state.Config.mode
+],(mode)=>{
+  return mode?false:true;
+})
 
+const mapStateToProps=(state)=>({
+  checked: switchSelector(state)
+})
 
-export default withTheme(UserCenter)
+const mapDispatchToProps=(dispatch)=>bindActionCreators({
+  SwitchThemeAct: actions.SwitchTheme,
+},dispatch)
+
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(UserCenter))

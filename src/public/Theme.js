@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
 import {createMuiTheme } from 'material-ui/styles';
-import {purple,green} from 'material-ui/colors';
+import {purple,pink} from 'material-ui/colors';
 
 export const styledTheme={
   palette: {
     type: 'light',
-    primary: {...green},
+    primary: {...pink},
     background:{
       contentFrame:'#fff',
       page:'#eee',

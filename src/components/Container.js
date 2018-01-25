@@ -27,7 +27,7 @@ class Container extends Component {
       childrenH,
       offsetH,
       Container:styled.div`
-        height: ${childrenH+10}px;
+        height: ${childrenH}px;
         >div{
           position: fixed;
         }
