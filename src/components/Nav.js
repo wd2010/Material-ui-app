@@ -7,7 +7,7 @@ import styled,{withTheme} from 'styled-components';
 
 let Navigation=styled(BottomNavigation)`
   width: 100%;
-  border-top: 1px solid #eee;
+  border-top: 1px solid ${props => props.theme.palette.background.contentFrame};
 `
 let Button=styled(BottomNavigationAction)`
     color: ${props=>((props.value=='/home' && props.pathname==='/') ||(props.value===props.pathname))?props.theme.palette.primary['500']:''};

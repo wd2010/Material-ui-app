@@ -10,5 +10,6 @@ export const SET_TITLE_DIRECTION='SET_TITLE_DIRECTION';//设置滚动条title缓
 export const CLEAR_SCROLL='CLEAR_SCROLL';//初始化滚动条
 
 /*Config*/
-export const SWITCH_THEME='SWITCH_THEME';//切换主题
+export const SWITCH_THEME='SWITCH_THEME';//切换日夜模式
+export const CHANGE_THEME='CHANGE_THEME';//切换主题
 

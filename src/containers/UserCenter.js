@@ -4,14 +4,17 @@ import {bindActionCreators} from 'redux';
 import {withRouter} from 'react-router-dom';
 import styled from 'styled-components'
 import {List, ListItem, ListItemText,Avatar, Divider, ListItemIcon , Switch } from 'material-ui';
-import {Brush as ThemeIcon, Brightness5 as DayIcon, Brightness4 as NightIcon} from 'material-ui-icons';
+import {
+  Brush as ThemeIcon, Brightness5 as DayIcon, Brightness4 as NightIcon, BorderColor as EditorIcon,
+  Star as StarIcon, LocalOffer as LocalOfferIcon
+} from 'material-ui-icons';
 import * as actions from '../store/actions/Config';
 import {createSelector} from 'reselect';
 
 const UserList = styled(List)`
     &&{
-      border-top: 1px solid #eee;
-      border-bottom: 1px solid #eee;
+      border-top: 1px solid ${props => props.theme.palette.background.contentFrame};
+      border-bottom: 1px solid ${props => props.theme.palette.background.contentFrame};
       padding: 0;
       margin-bottom: 5px;
       background: ${props => props.theme.palette.background.contentFrame};
@@ -69,6 +72,53 @@ class UserCenter extends Component{
             </ListItemIcon>
             <ListItemText primary="主题选择"  />
           </ListItem>
+        </UserList>
+        <UserList >
+          <ListItem button >
+            <ListItemIcon><EditorIcon /></ListItemIcon>
+            <ListItemText primary='我的创作'   />
+          </ListItem>
+          <Divider inset />
+          <ListItem button >
+            <ListItemIcon><StarIcon /></ListItemIcon>
+            <ListItemText primary='我的收藏'   />
+          </ListItem>
+          <Divider inset />
+          <ListItem button >
+            <ListItemIcon><LocalOfferIcon /></ListItemIcon>
+            <ListItemText primary='我的标签'   />
+          </ListItem>
+          <Divider inset />
+          <ListItem button >
+            <ListItemIcon><EditorIcon /></ListItemIcon>
+            <ListItemText primary='我的创作'   />
+          </ListItem>
+          <Divider inset />
+          <ListItem button >
+            <ListItemIcon><StarIcon /></ListItemIcon>
+            <ListItemText primary='我的收藏'   />
+          </ListItem>
+          <Divider inset />
+          <ListItem button >
+            <ListItemIcon><LocalOfferIcon /></ListItemIcon>
+            <ListItemText primary='我的标签'   />
+          </ListItem>
+          <Divider inset />
+          <ListItem button >
+            <ListItemIcon><EditorIcon /></ListItemIcon>
+            <ListItemText primary='我的创作'   />
+          </ListItem>
+          <Divider inset />
+          <ListItem button >
+            <ListItemIcon><StarIcon /></ListItemIcon>
+            <ListItemText primary='我的收藏'   />
+          </ListItem>
+          <Divider inset />
+          <ListItem button >
+            <ListItemIcon><LocalOfferIcon /></ListItemIcon>
+            <ListItemText primary='我的标签'   />
+          </ListItem>
+
         </UserList>
       </UserContainer>
     )

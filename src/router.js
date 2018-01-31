@@ -1,9 +1,10 @@
-import React from 'react'
-import {Route, Switch } from 'react-router-dom';
+import React from 'react';
+import {connect} from 'react-redux';
+import {Route, Switch,withRouter } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import {ThemeProvider} from 'styled-components';
-import { MuiThemeProvider} from 'material-ui/styles';
-import {theme,styledTheme} from './public/Theme';
+import { MuiThemeProvider,createMuiTheme} from 'material-ui';
+import {styledTheme} from './public/Theme';
 
 const Loading=(props)=>
   <div>Loading...</div>
@@ -18,16 +19,24 @@ const LoadableUser = Loadable({
   loading: Loading,
 });
 
-const Routers=({isProd=false})=> (
-  <MuiThemeProvider theme={theme} sheetsManager={isProd?(new Map()):null}>
-    <ThemeProvider theme={styledTheme}>
-      <Switch>
-        <Route path='/user' component={LoadableUser} />
-        <Route path='/article' component={LoadableUser} />
-        <Route path='/' component={LoadableTab} />
-      </Switch>
-    </ThemeProvider>
-  </MuiThemeProvider>
-)
+const Routers=({isProd=false,themeColor,mode})=>{
+  const themes=styledTheme({themeColor,mode})
+  return(
+    <MuiThemeProvider theme={createMuiTheme(themes)} sheetsManager={isProd?(new Map()):null}>
+      <ThemeProvider theme={themes}>
+        <Switch>
+          <Route path='/user' component={LoadableUser} />
+          <Route path='/article' component={LoadableUser} />
+          <Route path='/' component={LoadableTab} />
+        </Switch>
+      </ThemeProvider>
+    </MuiThemeProvider>
+  )
+}
 
-export default Routers;
+const mapStateToProps=(state)=>({
+  themeColor: state.Config.themeColor,
+  mode: state.Config.mode,
+})
+
+export default withRouter(connect(mapStateToProps)(Routers));

@@ -43,7 +43,6 @@ const scrollSelector=createSelector([
         navHide: direction==2?true:false,
         titleType:'usercenter'
       }
-
     default:
       return {titleHide:false,navHide:false,titleType:'search'};
   }
