@@ -35,8 +35,8 @@ class UserCenter extends Component{
   }
   //选择主题
   handleSelectTheme(){
-    let {history}=this.props;
-    history.push('/theme')
+    let {history,location:{pathname}}=this.props;
+    history.push('/theme',{from:pathname,title:'主题'})
   }
   render(){
     let {checked}=this.props;
