@@ -24,7 +24,7 @@ class Container extends Component {
     let ele = document.getElementById('container');
     let {childrenH,offsetH}= getChildrenH(ele,type);
     this.setState({
-      childrenH,
+      childrenH:childrenH+5,
       offsetH,
       Container:styled.div`
         height: ${childrenH}px;

@@ -23,7 +23,7 @@ class Nav extends Component{
       <Navigation style={style} value={pathname} showLabels onChange={::this.changeRouter} >
         <Button label="首页" pathname={pathname} value="/home" icon={<HomeIcon />} />
         <Button label="专栏" pathname={pathname} value="/post" icon={<MenuIcon />} />
-        <Button label="用户" pathname={pathname} value="/usercenter" icon={<PersonIcon />} />
+        <Button label="用户" pathname={pathname} value="/user" icon={<PersonIcon />} />
       </Navigation>
     )
   }

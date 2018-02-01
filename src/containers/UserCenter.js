@@ -27,7 +27,6 @@ const AvatarHead=styled(Avatar)`
 const UserContainer=styled.div`
   padding-top: 5px;
   padding-bottom: 5px;
-  background: ${props=>props.theme.palette.background.page}
 `
 class UserCenter extends Component{
   //白天黑夜模式
@@ -42,11 +41,11 @@ class UserCenter extends Component{
     history.push('/theme',{from:pathname,title:'主题'})
   }
   render(){
-    let {checked}=this.props;
+    let {checked,history,location:{pathname}}=this.props;
     return (
       <UserContainer>
         <UserList >
-          <ListItem button>
+          <ListItem button onClick={()=>history.push(`/user/${'wd2010'}`,{from:pathname,title:'wd2010'})}>
             <AvatarHead alt="wd2010" src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1516783928&di=5993104b0e8f5060411f270d91b710da&src=http://wenwen.soso.com/p/20110627/20110627184931-1448979489.jpg" />
             <ListItemText primary="wd2010" secondary="查看或编辑个人主页" />
           </ListItem>
@@ -75,12 +74,7 @@ class UserCenter extends Component{
         </UserList>
         <UserList >
           <ListItem button >
-            <ListItemIcon><EditorIcon /></ListItemIcon>
-            <ListItemText primary='我的创作'   />
-          </ListItem>
-          <Divider inset />
-          <ListItem button >
-            <ListItemIcon><StarIcon /></ListItemIcon>
+            <ListItemIcon ><StarIcon /></ListItemIcon>
             <ListItemText primary='我的收藏'   />
           </ListItem>
           <Divider inset />
@@ -88,42 +82,10 @@ class UserCenter extends Component{
             <ListItemIcon><LocalOfferIcon /></ListItemIcon>
             <ListItemText primary='我的标签'   />
           </ListItem>
-          <Divider inset />
-          <ListItem button >
-            <ListItemIcon><EditorIcon /></ListItemIcon>
-            <ListItemText primary='我的创作'   />
-          </ListItem>
-          <Divider inset />
-          <ListItem button >
-            <ListItemIcon><StarIcon /></ListItemIcon>
-            <ListItemText primary='我的收藏'   />
-          </ListItem>
-          <Divider inset />
-          <ListItem button >
-            <ListItemIcon><LocalOfferIcon /></ListItemIcon>
-            <ListItemText primary='我的标签'   />
-          </ListItem>
-          <Divider inset />
-          <ListItem button >
-            <ListItemIcon><EditorIcon /></ListItemIcon>
-            <ListItemText primary='我的创作'   />
-          </ListItem>
-          <Divider inset />
-          <ListItem button >
-            <ListItemIcon><StarIcon /></ListItemIcon>
-            <ListItemText primary='我的收藏'   />
-          </ListItem>
-          <Divider inset />
-          <ListItem button >
-            <ListItemIcon><LocalOfferIcon /></ListItemIcon>
-            <ListItemText primary='我的标签'   />
-          </ListItem>
-
         </UserList>
       </UserContainer>
     )
   }
-
 }
 
 const switchSelector=createSelector([

@@ -2,26 +2,34 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions  from '../store/actions/home';
-import {Link } from 'react-router-dom';
+import {Link ,withRouter} from 'react-router-dom';
+import ReturnTitle from "../components/Title/ReturnTitle";
+import Nav from '../components/Nav';
+import Container from '../components/Container';
 
 class User extends Component{
 
   render(){
-    let {count}=this.props;
+    let {titleDirection,direction}=this.props;
+    let titleHide=titleDirection?false:(direction==2?true:false);
+    let navHide=direction==2?true:false;
     return (
-      <div>
+      <div style={{height: '2000px'}}>
+        <Container type='title' hide={titleHide}>
+          <ReturnTitle />
+        </Container>
         <h1>User页面</h1>
+        <Container type='menu' hide={navHide}>
+          <Nav />
+        </Container>
       </div>
     )
   }
 }
 
 const mapStateToProps=(state)=>({
-  count: state.counter.count,
+  titleDirection: state.Scroll.titleDirection,
+  direction: state.Scroll.direction,
 })
 
-const mapDispatchToProps=(dispatch)=>bindActionCreators({
-  add: actions.add,
-},dispatch)
-
-export default connect(mapStateToProps,mapDispatchToProps)(User)
+export default connect(mapStateToProps)(withRouter(User))

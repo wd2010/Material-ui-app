@@ -9,6 +9,8 @@ const Home = Loadable({
   loader: () =>import(/* webpackChunkName: 'Home' */'../containers/Home'),
   loading: Loading,
 });
+
+
 const PostList = Loadable({
   loader: () =>import(/* webpackChunkName: 'Search' */'../containers/PostList'),
   loading: Loading,
@@ -22,14 +24,16 @@ const Theme = Loadable({
   loading: Loading,
 });
 
+
 const TabContent=()=>{
   return (
     <Switch>
       <Route path='/' component={Home} exact={true} />
       <Route path='/home' component={Home} />
       <Route path='/post' component={PostList} />
-      <Route path='/usercenter' component={UserCenter} />
+      <Route path='/user' component={UserCenter} exact={true} />
       <Route path='/theme' component={Theme} />
+
     </Switch>
   )
 }

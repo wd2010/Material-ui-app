@@ -13,3 +13,5 @@ export const CLEAR_SCROLL='CLEAR_SCROLL';//初始化滚动条
 export const SWITCH_THEME='SWITCH_THEME';//切换日夜模式
 export const CHANGE_THEME='CHANGE_THEME';//切换主题
 
+/*颜色取值*/
+export const COLORS=['red','pink','purple','indigo','blue','cyan','lightBlue','teal','green','lightGreen','lime','yellow','orange','brown','grey']

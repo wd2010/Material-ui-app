@@ -8,7 +8,7 @@ export const Config=(state=initConfig,action)=>{
     case SWITCH_THEME:
       return Object.assign({},state,{mode: action.mode});
     case CHANGE_THEME:
-      return Object.assign({},state,{themeColor:action.themeColor})
+      return Object.assign({},state,{themeColor:action.themeColor,mode: action.mode})
     default:
       return state;
   }

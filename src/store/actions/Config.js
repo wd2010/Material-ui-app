@@ -8,4 +8,5 @@ export const SwitchTheme=({value})=>({
 export const changeTheme=(themeColor)=>({
   type: CHANGE_THEME,
   themeColor,
+  mode:1,
 })
