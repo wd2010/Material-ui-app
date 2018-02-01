@@ -13,7 +13,7 @@ class Container extends Component {
       offsetH: 0,
       hide:true,
       childAnimation:{
-        transition: 'top 0.4s ease,bottom 0.4s ease',
+        transition: 'top 0.4s ease,bottom 0.4s ease,visibility 0.4s ease',
       },
       Container:styled.div``,
     }
@@ -40,9 +40,13 @@ class Container extends Component {
 
   render() {
     let {childrenH,offsetH,childAnimation,Container} = this.state;
-    let {type,children,hide}=this.props;
+    let {type,children,hide,transparent}=this.props;
     let hideH=hide?`-${offsetH?offsetH:childrenH}px`:0;
-    let childStyle=Object.assign({},childAnimation,{'top': type==='title'?hideH:'','bottom': type==='menu'?hideH:''})
+    let childStyle=Object.assign({},childAnimation,{
+      'top': type==='title'?hideH:'',
+      'bottom': type==='menu'?hideH:'',
+      'visibility': transparent?'hidden':'visible',
+    })
     return (
       <Container id='container'>
         {React.cloneElement(children,

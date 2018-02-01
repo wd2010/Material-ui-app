@@ -23,7 +23,6 @@ const devConfig={
     modules:[path.resolve(rootPath, "src"), "node_modules"],
   },
   devServer:{
-    contentBase:'assets',
     hot:true,
     host: '0.0.0.0',
     historyApiFallback:true,

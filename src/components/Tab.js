@@ -40,7 +40,6 @@ const scrollSelector=createSelector([
 const mapStateToProps=(state)=>({
   titleHide: scrollSelector(state).titleHide,
   navHide: scrollSelector(state).navHide,
-  titleType: scrollSelector(state).titleType,
 })
 
 const mapDispatchToProps=(dispatch)=>bindActionCreators({
