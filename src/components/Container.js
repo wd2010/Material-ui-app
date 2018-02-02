@@ -20,7 +20,7 @@ class Container extends Component {
   }
 
   componentDidMount() {
-    let {type,setScrollCacheHAct}=this.props;
+    let {type,setScrollCacheHAct,setHeaderHAct}=this.props;
     let ele = document.getElementById('container');
     let {childrenH,offsetH}= getChildrenH(ele,type);
     this.setState({
@@ -35,6 +35,7 @@ class Container extends Component {
     });
     if(type==='title'){
       setScrollCacheHAct({cacheH:offsetH?offsetH:childrenH})
+      setHeaderHAct({childrenH})
     }
   }
 
@@ -65,6 +66,7 @@ const mapStateToProps = (state) => ({
 })
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   setScrollCacheHAct: actions.setScrollCacheH,
+  setHeaderHAct: actions.setHeaderH,
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(withTheme(Container))

@@ -11,7 +11,7 @@ const LoadableTab = Loadable({
   loading: Loading,
 });
 const LoadableUser = Loadable({
-  loader: () =>import(/* webpackChunkName: 'User' */'./User'),
+  loader: () =>import(/* webpackChunkName: 'User' */'./User/User.js'),
   loading: Loading,
 });
 
@@ -20,7 +20,6 @@ const AppContainer=styled.div`
   min-height: ${minH}px;
   background: ${props=>props.theme.palette.background.page};
 `
-
 const App=()=>{
   return(
     <AppContainer>

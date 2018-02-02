@@ -15,14 +15,14 @@ export const styledTheme=({mode,themeColor})=>{
         background:{
           contentFrame:mode?'#fff':'#333',
           page:mode?'#eee':'#111',
-          title: mode?theme:'#333',
-          titleBtn: mode? theme :'#111',
+          title: mode?theme[500]:'#333',
+          titleBtn: mode? theme[500] :'#111',
         },
         color: {
           title: mode? '': 'white',
         }
       },
-
+      direction: 'rtl',
       typography: {
         htmlFontSize: 18,
       },

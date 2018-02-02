@@ -8,7 +8,7 @@ import {
   Brush as ThemeIcon, Brightness5 as DayIcon, Brightness4 as NightIcon, BorderColor as EditorIcon,
   Star as StarIcon, LocalOffer as LocalOfferIcon
 } from 'material-ui-icons';
-import * as actions from '../store/actions/Config';
+import * as actions from '../../store/actions/Config';
 import {createSelector} from 'reselect';
 
 const UserList = styled(List)`

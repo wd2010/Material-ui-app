@@ -16,7 +16,7 @@ const PostList = Loadable({
   loading: Loading,
 });
 const UserCenter = Loadable({
-  loader: () =>import(/* webpackChunkName: 'UserCenter' */'../containers/UserCenter'),
+  loader: () =>import(/* webpackChunkName: 'UserCenter' */'../containers/User/UserCenter'),
   loading: Loading,
 });
 const Theme = Loadable({

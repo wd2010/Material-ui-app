@@ -1,4 +1,4 @@
-import {SET_SCROLL_ENDS,SET_SCROLL_CACHE_H,SET_SCROLL_DIRECTION,SET_TITLE_DIRECTION,CLEAR_SCROLL} from '../constants';
+import {SET_SCROLL_ENDS,SET_SCROLL_CACHE_H,SET_SCROLL_DIRECTION,SET_TITLE_DIRECTION,CLEAR_SCROLL,SET_HEADER_H} from '../constants';
 
 export const getScrollDetail=({currentPosition,nextPosition})=>(dispatch,getState)=>{
   let {Scroll:{direction:preDirection}}=getState();
@@ -11,6 +11,10 @@ export const getScrollDetail=({currentPosition,nextPosition})=>(dispatch,getStat
     })
   }
 }
+export const setHeaderH=({childH})=>({
+  type: SET_HEADER_H,
+  childH
+})
 
 export const setTitleDirection=({titleDirection})=>({
   type: SET_TITLE_DIRECTION,
