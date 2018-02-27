@@ -1,14 +1,16 @@
 {
-  "name": "webpack-demo1",
+  "name": "material-ui-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clearCopy":"rm -rf www && cp -r dist www",
     "start": "cross-env NODE_BUILD=client NODE_ENV=development webpack-dev-server --hotOnly --progress --config ./config/webpack.config.dev.js ",
     "build": "cross-env NODE_ENV=production webpack --progress -p --config ./config/webpack.config.prod.js",
     "server": "cross-env NODE_BUILD=server NODE_ENV=production nodemon ./server/index.js --watch config --watch server",
     "dev:server": "npm run build && npm run server",
-    "analyzer": "webpack-bundle-analyzer stats.json"
+    "publish": "npm run build && npm run clearCopy && pm2 restart",
+    "analyzer": "cross-env NODE_ENV=production webpack --progress -p --config ./config/webpack.config.prod.js && webpack-bundle-analyzer stats.json"
   },
   "author": "",
   "license": "ISC",
@@ -62,6 +64,7 @@
     "react-dom": "^16.2.0",
     "react-helmet": "^5.2.0",
     "react-jss": "^8.2.0",
+    "react-list": "^0.8.8",
     "react-loadable": "^5.3.1",
     "react-redux": "^5.0.6",
     "react-router-config": "^1.0.0-beta.4",

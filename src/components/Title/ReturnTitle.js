@@ -4,7 +4,7 @@ import {ArrowBack as ArrowBackIcon} from 'material-ui-icons';
 import {withRouter} from 'react-router-dom';
 import styled from 'styled-components';
 let ReturnBar=styled(AppBar).attrs({
-  background: props=> props.opacity<1?'none': props.theme.palette.background.title,
+  background: props=> props.opacity < 1?'none': props.theme.palette.background.title,
 })`
    &&{
     background: ${props=>props.background};

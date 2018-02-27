@@ -8,7 +8,8 @@ export const SET_SCROLL_ENDS='SET_SCROLL_ENDS';//获取滚动条ends位置
 export const SET_SCROLL_DIRECTION='SET_SCROLL_DIRECTION';//获取滚动条方向
 export const SET_TITLE_DIRECTION='SET_TITLE_DIRECTION';//设置滚动条title缓冲区
 export const CLEAR_SCROLL='CLEAR_SCROLL';//初始化滚动条
-export const SET_HEADER_H='SET_HEADER_H';//获取header高度
+export const CLEAR_SCROLL_H='CLEAR_SCROLL_H';//初始化滚动条
+export const SET_SCROLL_H='SET_SCROLL_H';//获取scroll高度
 
 /*Config*/
 export const SWITCH_THEME='SWITCH_THEME';//切换日夜模式

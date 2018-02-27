@@ -26,15 +26,15 @@ const UserContent=styled.div`
     }
   }
   .user-info{
-    height: 180px;
+    height: 140px;
     background: ${props=>props.theme.palette.background.contentFrame};
     text-align: center;
     padding: 0 20px;
     margin-bottom: 10px;
     .avatar{
       position: relative;
-      margin-top: -44px;
       >div{
+        margin-top: -44px;
         width: 80px;
         height: 80px;
         padding: 4px;
@@ -61,10 +61,7 @@ class User extends Component{
     this.handleScroll=this.handleScroll.bind(this);
   }
   handleScroll(){
-
-    let scrollH=document.documentElement.scrollTop;
-    this.setState({scrollH})
-
+    this.setState({scrollH:document.documentElement.scrollTop})
   }
   componentDidMount(){
     window.addEventListener('scroll',this.handleScroll,false);
@@ -80,13 +77,12 @@ class User extends Component{
     let opacity=scrollH<(200-56)?scrollH/(200-56):1;
     let avatarOpacity=opacity<=0.4?1:(opacity<=0.8? 1-10*(opacity-0.4) :0)
     return (
-      <div style={{height: '2000px'}}>
-
+      <div>
         <ReturnTitle  opacity={opacity} />
         <UserContent >
           <div className='bg'>
             <div style={{opacity}}></div>
-            <img src="http://img.netbian.com/file/2018/0127/4c3f9ef69521e589e2e432a8875c65bd.jpg" alt=""/>
+            <img src="https://bpic.588ku.com/back_pic/04/30/30/055840f125c5f44.jpg!/fw/320/quality/90/unsharp/true/compress/true" alt=""/>
           </div>
           <div className='user-info'>
             <div className='avatar' style={{opacity:avatarOpacity}}>

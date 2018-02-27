@@ -11,10 +11,6 @@ export const getScrollDetail=({currentPosition,nextPosition})=>(dispatch,getStat
     })
   }
 }
-export const setHeaderH=({childH})=>({
-  type: SET_HEADER_H,
-  childH
-})
 
 export const setTitleDirection=({titleDirection})=>({
   type: SET_TITLE_DIRECTION,

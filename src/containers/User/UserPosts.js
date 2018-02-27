@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React,{PureComponent} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions  from '../../store/actions/home';
@@ -7,56 +7,63 @@ import styled from 'styled-components';
 import {AppBar,Tabs, Typography} from 'material-ui';
 import { Tab } from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
+import Loadable from 'react-loadable';
 
-function TabContainer({ children, dir }) {
-  return (
-    <Typography component="div" dir={dir} style={{ padding: 8 * 3}}>
-      {children}
-    </Typography>
-  );
-}
+const Loading=(props)=>
+  <div>Loading...</div>
 
-const mapIndexToRouter=(value,userid)=>value===0?`/user/${userid}/dynamic`:(value===1?`/user/${userid}/answer`:`/user/${userid}/article`)
+const Dynamic = Loadable({
+  loader: () =>import(/* webpackChunkName: 'Dynamic' */'./Dynamic'),
+  loading: Loading,
+});
+const Answer = Loadable({
+  loader: () =>import(/* webpackChunkName: 'Answer' */'./Answer'),
+  loading: Loading,
+});
+const Article = Loadable({
+  loader: () =>import(/* webpackChunkName: 'Article' */'./Article'),
+  loading: Loading,
+});
 
-class UserPosts extends Component{
 
-  handleChange(...args){
+const mapIndexToRouter=(value,userid)=>value===2?`/user/${userid}/article`:(value===1?`/user/${userid}/answer`:`/user/${userid}/dynamic`)
+
+const AppBarHead=styled(AppBar)`
+  &&{
+    position:sticky;
+    top:56px;
+    background: ${props=>props.theme.palette.background.contentFrame};
+  }
+`
+class UserPosts extends PureComponent{
+
+  handleChange(value){
     let {history,match:{params:{userid}}}=this.props;
-    let router=mapIndexToRouter(args[args.length-1],userid)
+    let router=mapIndexToRouter(value,userid)
     history.replace(router)
   }
 
-
   render(){
-    let {location:{pathname}}=this.props;
+    let {location:{pathname},match: {params:{userid}}}=this.props;
+    let index=pathname.endsWith('/dynamic')?0:(pathname.endsWith('/answer')?1:2);
+    let path=pathname.match(/\/(\w+)$/g)[0];
+    let routeComponent=path==='/article'?Article:(path==='/answer'?Answer:Dynamic);
 
-    let index=pathname.endsWith('/dynamic')?0:(pathname.endsWith('/answer')?1:2)
     return (
-      <div>
-        <AppBar position="static" color="default">
-          <Tabs value={index} onChange={::this.handleChange} indicatorColor="primary" textColor="primary" fullWidth>
+      <div style={{minHeight:`${window.innerHeight-200-140}px`}}>
+        <AppBarHead  color="default">
+          <Tabs value={index} onChange={(e,value)=>this.handleChange(value)} indicatorColor="primary" textColor="primary" fullWidth>
             <Tab label="动态" />
             <Tab label="回答" />
             <Tab label="文章" />
           </Tabs>
-        </AppBar>
-        <SwipeableViews axis= 'x' index={index} onChangeIndex={::this.handleChange}>
-
-
-                <TabContainer dir={'rtl'}>动态</TabContainer>
-
-                <TabContainer dir={'rtl'}>回答</TabContainer>
-
-
-                <TabContainer dir={'rtl'}>文章</TabContainer>
-
-
-
-        </SwipeableViews>
+        </AppBarHead>
+        <Typography component="div" style={{padding: '10px 0'}}>
+          <Route pathname={pathname} component={routeComponent} />
+        </Typography>
       </div>
     )
   }
-
 }
 
 export default withRouter(UserPosts)
