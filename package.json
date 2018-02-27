@@ -4,12 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clearCopy":"rm -rf www && cp -r dist www",
     "start": "cross-env NODE_BUILD=client NODE_ENV=development webpack-dev-server --hotOnly --progress --config ./config/webpack.config.dev.js ",
     "build": "cross-env NODE_ENV=production webpack --progress -p --config ./config/webpack.config.prod.js",
     "server": "cross-env NODE_BUILD=server NODE_ENV=production nodemon ./server/index.js --watch config --watch server",
     "dev:server": "npm run build && npm run server",
-    "publish": "npm run build && npm run clearCopy && pm2 restart",
+    "publish": "npm run build && pm2 restart",
     "analyzer": "cross-env NODE_ENV=production webpack --progress -p --config ./config/webpack.config.prod.js && webpack-bundle-analyzer stats.json"
   },
   "author": "",
