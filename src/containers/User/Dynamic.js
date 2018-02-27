@@ -38,8 +38,11 @@ const itemSizeEstimator=(index, cache)=>cache[index] || 450
 const Dynamic=()=>{
   return (
     <div >
-      <ReactList
-        itemRenderer={(index,key)=>renderItem({index,key,posts})} length={posts.length} type='variable' threshold={500} itemSizeEstimator={itemSizeEstimator} />
+      {
+        posts.map((item,index)=>(
+          <PostCard key={index} {...item} />
+        ))
+      }
     </div>
   )
 }

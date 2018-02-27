@@ -1,7 +1,7 @@
 import React from 'react';
-import {Card,Avatar,IconButton,Typography } from 'material-ui';
+import {Card,Avatar,IconButton,Typography, Badge } from 'material-ui';
 import { CardHeader, CardMedia, CardContent, CardActions } from 'material-ui/Card';
-import {Favorite as FavoriteIcon, Share as ShareIcon, MoreVert as MoreVertIcon} from 'material-ui-icons'
+import {Favorite as FavoriteIcon, ThumbUp as ThumbUpIcon, MoreVert as MoreVertIcon} from 'material-ui-icons'
 const PostCard =({username,headImg,time,title,img,content})=>{
   return (
     <Card style={{marginBottom:'10px'}} >
@@ -24,12 +24,14 @@ const PostCard =({username,headImg,time,title,img,content})=>{
       }
 
       <CardActions  disableActionSpacing >
-        <IconButton aria-label="Add to favorites">
+        <Badge badgeContent={4} color="primary">
           <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="Share">
-          <ShareIcon />
-        </IconButton>
+        </Badge>
+        <Badge badgeContent={4} color="primary">
+          <ThumbUpIcon />
+        </Badge>
+
+
       </CardActions>
     </Card>
   )

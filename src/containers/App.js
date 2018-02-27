@@ -6,10 +6,6 @@ import styled from 'styled-components';
 const Loading=(props)=>
   <div>Loading...</div>
 
-const LoadableTab = Loadable({
-  loader: () =>import(/* webpackChunkName: 'Tab' */'../components/Tab'),
-  loading: Loading,
-});
 const LoadableUser = Loadable({
   loader: () =>import(/* webpackChunkName: 'User' */'./User/User.js'),
   loading: Loading,
@@ -24,9 +20,7 @@ const App=()=>{
   return(
     <AppContainer>
       <Switch>
-        <Route path='/user/:userid' component={LoadableUser} />
-        <Route path='/article' component={LoadableTab} />
-        <Route path='/' component={LoadableTab} />
+        <Route path='/' component={LoadableUser} />
       </Switch>
     </AppContainer>
   )

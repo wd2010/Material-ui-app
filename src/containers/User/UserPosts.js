@@ -26,9 +26,6 @@ const Article = Loadable({
   loading: Loading,
 });
 
-
-const mapIndexToRouter=(value,userid)=>value===2?`/user/${userid}/article`:(value===1?`/user/${userid}/answer`:`/user/${userid}/dynamic`)
-
 const AppBarHead=styled(AppBar)`
   &&{
     position:sticky;
@@ -37,31 +34,26 @@ const AppBarHead=styled(AppBar)`
   }
 `
 class UserPosts extends PureComponent{
-
+  state={index:0}
   handleChange(value){
-    let {history,match:{params:{userid}}}=this.props;
-    let router=mapIndexToRouter(value,userid)
-    history.replace(router)
+    this.setState({index:value})
   }
 
   render(){
-    let {location:{pathname},match: {params:{userid}}}=this.props;
-    let index=pathname.endsWith('/dynamic')?0:(pathname.endsWith('/answer')?1:2);
-    let path=pathname.match(/\/(\w+)$/g)[0];
-    let routeComponent=path==='/article'?Article:(path==='/answer'?Answer:Dynamic);
-
     return (
       <div style={{minHeight:`${typeof(window)==='undefined'?1500: window.innerHeight-200-140}px`}}>
         <AppBarHead  color="default">
-          <Tabs value={index} onChange={(e,value)=>this.handleChange(value)} indicatorColor="primary" textColor="primary" fullWidth>
-            <Tab label="动态" />
-            <Tab label="回答" />
-            <Tab label="文章" />
+          <Tabs value={this.state.index} onChange={(e,value)=>this.handleChange(value)} indicatorColor="primary" textColor="primary" fullWidth>
+            <Tab label="个人作品" />
+            <Tab label="工作经历" />
+            <Tab label="项目经验" />
           </Tabs>
         </AppBarHead>
-        <Typography component="div" style={{padding: '10px 0'}}>
-          <Route pathname={pathname} component={routeComponent} />
-        </Typography>
+        <SwipeableViews index={this.state.index} onChangeIndex={this.handleChange.bind(this)} >
+          <Dynamic />
+          <Article />
+          <Answer />
+        </SwipeableViews>
       </div>
     )
   }

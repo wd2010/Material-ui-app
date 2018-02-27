@@ -22,8 +22,7 @@ class ReturnTitle extends Component{
     return (
       <ReturnBar style={style} opacity={opacity!==undefined?opacity:1} elevation={0}>
         <Toolbar>
-          <IconButton onClick={::this.goBack} color="inherit" aria-label="ArrowBack"><ArrowBackIcon /></IconButton>
-          <Typography style={{opacity}} type="title" color="inherit" >{state && state.title?state.title:'返回'}</Typography>
+          <Typography style={{opacity}} type="title" color="inherit" >{state && state.title?state.title:'李伟桥'}</Typography>
         </Toolbar>
       </ReturnBar>
     )

@@ -97,9 +97,6 @@ class User extends Component{
           </div>
           <UserPosts />
         </UserContent>
-        <Container type='menu' hide={navHide}>
-          <Nav />
-        </Container>
       </div>
     )
   }
