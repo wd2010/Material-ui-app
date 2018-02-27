@@ -77,7 +77,7 @@ class User extends Component{
     let opacity=scrollH<(200-56)?scrollH/(200-56):1;
     let avatarOpacity=opacity<=0.4?1:(opacity<=0.8? 1-10*(opacity-0.4) :0)
     return (
-      <div>
+      <div style={{minHeight: `${process.env.NODE_BUILD==='client' ? window.innerHeight : 1500}px`}}>
         <ReturnTitle  opacity={opacity} />
         <UserContent >
           <div className='bg'>

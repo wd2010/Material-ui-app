@@ -9,6 +9,7 @@ import { Tab } from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import Loadable from 'react-loadable';
 
+
 const Loading=(props)=>
   <div>Loading...</div>
 
@@ -50,7 +51,7 @@ class UserPosts extends PureComponent{
     let routeComponent=path==='/article'?Article:(path==='/answer'?Answer:Dynamic);
 
     return (
-      <div style={{minHeight:`${window.innerHeight-200-140}px`}}>
+      <div style={{minHeight:`${typeof(window)==='undefined'?1500: window.innerHeight-200-140}px`}}>
         <AppBarHead  color="default">
           <Tabs value={index} onChange={(e,value)=>this.handleChange(value)} indicatorColor="primary" textColor="primary" fullWidth>
             <Tab label="动态" />

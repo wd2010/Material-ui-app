@@ -9,7 +9,7 @@ import {createSelector} from 'reselect';
 
 const Tab =({titleHide,navHide})=>{
   return (
-    <div>
+    <div style={{minHeight: `${process.env.NODE_BUILD==='client' ? window.innerHeight : 1500}px`}}>
       <Container type='title' hide={titleHide}>
         <Title  />
       </Container>

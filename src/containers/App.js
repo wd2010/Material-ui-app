@@ -15,9 +15,9 @@ const LoadableUser = Loadable({
   loading: Loading,
 });
 
-let minH= process.env.NODE_BUILD==='client' && window.innerHeight || 1500
+
 const AppContainer=styled.div`
-  min-height: ${minH}px;
+
   background: ${props=>props.theme.palette.background.page};
 `
 const App=()=>{
