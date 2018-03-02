@@ -64,14 +64,11 @@ const prodConfig={
           }]
         }),
       },{
-        test: /\.(svg|woff2?|ttf|eot|jpe?g|png|gif)(\?.*)?$/i,
+        test: /\.(jpe?g|png|gif|svg|woff|eot|ttf)$/,
         exclude:/node_modules/,
         use: {
           loader: 'url-loader',
-          options: {
-            limit: 1024,
-            name: 'img/[sha512:hash:base64:7].[ext]'
-          }
+          options: {limit: 1, name: 'img/[sha512:hash:base64:7].[ext]'}
         }
       }
     ]

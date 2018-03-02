@@ -29,8 +29,12 @@ const Article = Loadable({
 const AppBarHead=styled(AppBar)`
   &&{
     position:sticky;
-    top:56px;
+    top:0;
     background: ${props=>props.theme.palette.background.contentFrame};
+    margin-bottom: 10px;
+    span{
+      color: rgba(0,0,0,0.8);
+    }
   }
 `
 class UserPosts extends PureComponent{

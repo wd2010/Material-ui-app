@@ -3,16 +3,15 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions  from '../../store/actions/home';
 import {Link ,withRouter} from 'react-router-dom';
-import ReturnTitle from "../../components/Title/ReturnTitle";
-import Nav from '../../components/Nav';
-import Container from '../../components/Container';
 import styled from 'styled-components';
 import {Button,Avatar} from 'material-ui';
 import UserPosts from './UserPosts';
+import {ContactPhone as PhoneIcon, ContactMail as ContactMailIcon} from 'material-ui-icons'
+import header from '../../assets/img/header.jpg'
 const UserContent=styled.div`
   .bg{
     position: relative;
-    height: 200px;
+    height: 150px;
     overflow: hidden;
     >div{
       width: 100%;
@@ -49,6 +48,27 @@ const UserContent=styled.div`
     }
     .info{
       margin-top: -20px;
+      >div:first-child{
+        margin-top: 20px;
+        >span{
+          font-weight: 700;
+          font-size: 1.5rem;
+        }
+      }
+      .connection{
+        margin-top: 5px;
+        font-size: 0.9rem;
+        >div{
+          display: inline-block;
+          >svg{
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+            color: #2979FF;
+          }
+        }
+        }
+      }
     }
   }
 `
@@ -74,11 +94,10 @@ class User extends Component{
     let {scrollH} = this.state;
     let titleHide=titleDirection?false:(direction==2?true:false);
     let navHide=direction==2?true:false;
-    let opacity=scrollH<(200-56)?scrollH/(200-56):1;
+    let opacity=scrollH<(150)?scrollH/(150):1;
     let avatarOpacity=opacity<=0.4?1:(opacity<=0.8? 1-10*(opacity-0.4) :0)
     return (
       <div style={{minHeight: `${process.env.NODE_BUILD==='client' ? window.innerHeight : 1500}px`}}>
-        <ReturnTitle  opacity={opacity} />
         <UserContent >
           <div className='bg'>
             <div style={{opacity}}></div>
@@ -87,12 +106,18 @@ class User extends Component{
           <div className='user-info'>
             <div className='avatar' style={{opacity:avatarOpacity}}>
               <div>
-                <Avatar alt="Remy Sharp" src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1517538793&di=b8b8067a73512c92a387dfd0b60d2674&src=http://e.hiphotos.baidu.com/zhidao/pic/item/a2cc7cd98d1001e955722f30b90e7bec54e79746.jpg"  />
+                <Avatar alt="name" src={header}  />
               </div>
             </div>
             <div className='info'>
-              <h4>wd2010</h4>
-              <Button raised color="primary">编辑个人资料</Button>
+              <div><span>李伟桥</span> 编辑/文案</div>
+              <div>
+                <span>湘潭大学</span> | <span>汉语言文学</span> | <span>3年工作经验</span>
+              </div>
+              <div className='connection'>
+                <div style={{width:'48%'}}><PhoneIcon /> 13533142854</div>
+                <div style={{width:'52%'}}><ContactMailIcon /> 1406137569@qq.com</div>
+              </div>
             </div>
           </div>
           <UserPosts />
