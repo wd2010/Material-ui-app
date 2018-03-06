@@ -6,6 +6,7 @@ import styled from 'styled-components';
 const JobInfo=styled.div`
   >span{
     display: inline-block;
+    font-size: 14px;
     &:first-child{
       width: 30%;
     }
@@ -33,10 +34,10 @@ class ExpansionCard extends PureComponent{
           <ExpansionPanel key={index} expanded={this.state.expanded === item.id} onChange={this.handleChange(item['id'])}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               <div style={{width:'100%'}}>
-                <div><BusinessIcon style={{color: '#2979FF',verticalAlign:'middle'}} /> {item.company}</div>
+                <div style={{fontSize:'14px'}}><BusinessIcon style={{color: '#2979FF',verticalAlign:'middle',width: '20px',height:'20px'}} /> {item.company}</div>
                 <JobInfo>
-                  <span><WorkIcon style={{color: '#2979FF',verticalAlign:'middle'}} /> {item.job}</span>
-                  <span><DateRangeIcon style={{color: '#2979FF',verticalAlign:'middle'}} /> {item.time}</span>
+                  <span><WorkIcon style={{color: '#2979FF',verticalAlign:'middle',width: '20px',height:'20px'}} /> {item.job}</span>
+                  <span><DateRangeIcon style={{color: '#2979FF',verticalAlign:'middle',width: '20px',height:'20px'}} /> {item.time}</span>
                 </JobInfo>
               </div>
             </ExpansionPanelSummary>

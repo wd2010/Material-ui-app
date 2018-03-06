@@ -115,8 +115,8 @@ class User extends Component{
                 <span>湘潭大学</span> | <span>汉语言文学</span> | <span>3年工作经验</span>
               </div>
               <div className='connection'>
-                <div style={{width:'48%'}}><PhoneIcon /> 13533142854</div>
-                <div style={{width:'52%'}}><ContactMailIcon /> 1406137569@qq.com</div>
+                <div style={{width:'40%'}}><PhoneIcon /> 13533142854</div>
+                <div style={{width:'60%'}}><ContactMailIcon /> 1406137569@qq.com</div>
               </div>
             </div>
           </div>

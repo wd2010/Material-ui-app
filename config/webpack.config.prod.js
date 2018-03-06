@@ -89,7 +89,7 @@ const prodConfig={
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new HtmlWebpackPlugin({
-      title:'yyy',
+      title:'李伟桥的个人简历',
       filename:'index.html',
       template:'./index.ejs',
     }),

@@ -8,10 +8,7 @@ import {AppBar,Tabs, Typography} from 'material-ui';
 import { Tab } from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import Loadable from 'react-loadable';
-
-
-const Loading=(props)=>
-  <div>Loading...</div>
+import Loading from '../../components/Loading.js';
 
 const Dynamic = Loadable({
   loader: () =>import(/* webpackChunkName: 'Dynamic' */'./Dynamic'),
@@ -23,6 +20,10 @@ const Answer = Loadable({
 });
 const Article = Loadable({
   loader: () =>import(/* webpackChunkName: 'Article' */'./Article'),
+  loading: Loading,
+});
+const Skill = Loadable({
+  loader: () =>import(/* webpackChunkName: 'Skill' */'./Skill'),
   loading: Loading,
 });
 
@@ -44,19 +45,23 @@ class UserPosts extends PureComponent{
   }
 
   render(){
+    let {index}=this.state;
+    console.log(index)
     return (
-      <div style={{minHeight:`${typeof(window)==='undefined'?1500: window.innerHeight-200-140}px`}}>
+      <div style={{minHeight:`${typeof(window)==='undefined'?1500: window.innerHeight-200-140}px`,fontSize:'14px'}}>
         <AppBarHead  color="default">
-          <Tabs value={this.state.index} onChange={(e,value)=>this.handleChange(value)} indicatorColor="primary" textColor="primary" fullWidth>
-            <Tab label="个人作品" />
+          <Tabs value={index} onChange={(e,value)=>this.handleChange(value)} indicatorColor="primary" textColor="primary" fullWidth>
             <Tab label="工作经历" />
             <Tab label="项目经验" />
+            <Tab label="个人作品" />
+            <Tab label="个人技能" />
           </Tabs>
         </AppBarHead>
-        <SwipeableViews index={this.state.index} onChangeIndex={this.handleChange.bind(this)} >
-          <Dynamic />
-          <Article />
-          <Answer />
+        <SwipeableViews index={index} onChangeIndex={this.handleChange.bind(this)} >
+          {index=='0' && <Article />}
+          {index=='1' && <Answer />}
+          {index=='2' && <Dynamic />}
+          {index=='3' && <Skill />}
         </SwipeableViews>
       </div>
     )

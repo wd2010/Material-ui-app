@@ -17,7 +17,7 @@ let jobs=[
   {
     id:'2',
     company:'深圳市多易得信息技术股份有限公司（潮生活集团）',
-    jon:'编辑',
+    job:'编辑',
     time:'2015.02-2016.05',
     jobDetail:'',
     list:[
