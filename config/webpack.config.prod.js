@@ -68,7 +68,7 @@ const prodConfig={
         exclude:/node_modules/,
         use: {
           loader: 'url-loader',
-          options: {limit: 1, name: 'img/[sha512:hash:base64:7].[ext]'}
+          options: {limit: 1024*15, name: 'img/[sha512:hash:base64:7].[ext]'}
         }
       }
     ]

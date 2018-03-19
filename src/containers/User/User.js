@@ -96,15 +96,16 @@ class User extends Component{
     let navHide=direction==2?true:false;
     let opacity=scrollH<(150)?scrollH/(150):1;
     let avatarOpacity=opacity<=0.4?1:(opacity<=0.8? 1-10*(opacity-0.4) :0)
+
     return (
       <div style={{minHeight: `${process.env.NODE_BUILD==='client' ? window.innerHeight : 1500}px`}}>
         <UserContent >
           <div className='bg'>
-            <div style={{opacity}}></div>
-            <img src="https://bpic.588ku.com/back_pic/04/30/30/055840f125c5f44.jpg!/fw/320/quality/90/unsharp/true/compress/true" alt=""/>
+            <div style={{opacity,'MozOpacity':opacity,'KhtmlOpacity':opacity}}></div>
+            <img src={require('../../assets/img/bg.jpg')} alt=""/>
           </div>
           <div className='user-info'>
-            <div className='avatar' style={{opacity:avatarOpacity}}>
+            <div className='avatar' style={{opacity:avatarOpacity,'MozOpacity':avatarOpacity,'KhtmlOpacity':avatarOpacity}}>
               <div>
                 <Avatar alt="name" src={header}  />
               </div>

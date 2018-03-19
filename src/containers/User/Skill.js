@@ -36,7 +36,7 @@ const Skill=()=>{
         </div>
       </div>
       <div>
-        <div>IT：</div>
+        <div>计算机：</div>
         <div>
           <ItemChip color='#FFCDD2' label="PS"  />
           <ItemChip color='#FFCDD2' label="Office"  />
