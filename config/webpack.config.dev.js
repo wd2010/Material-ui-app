@@ -10,7 +10,7 @@ const devConfig={
   context: path.join(rootPath,'./src'),
   entry:{
     client:'./Index.js',
-    vendors:['react','react-dom','react-loadable','react-redux','redux','react-router-dom','react-router-redux','redux-thunk','material-ui','redux-saga'],
+    vendors:['react','react-dom','react-loadable','react-redux','redux','react-router-dom','react-router-redux','redux-thunk','redux-saga'],
   },
   output:{
     filename:'[name].[hash:8].js',

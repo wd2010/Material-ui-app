@@ -3,11 +3,11 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {withRouter} from 'react-router-dom';
 import styled from 'styled-components'
-import {List, ListItem, ListItemText,Avatar, Divider, ListItemIcon , Switch } from 'material-ui';
+import {List, ListItem, ListItemText,Avatar, Divider, ListItemIcon , Switch } from '@material-ui/core';
 import {
   Brush as ThemeIcon, Brightness5 as DayIcon, Brightness4 as NightIcon, BorderColor as EditorIcon,
   Star as StarIcon, LocalOffer as LocalOfferIcon
-} from 'material-ui-icons';
+} from '@material-ui/icons';
 import * as actions from '../store/actions/Config';
 import {createSelector} from 'reselect';
 
@@ -64,7 +64,7 @@ class UserCenter extends Component{
               aria-label="夜间模式"
             />
           </ListItem>
-          <Divider inset />
+          <Divider variant="inset" />
           <ListItem button onClick={::this.handleSelectTheme}>
             <ListItemIcon>
               <ThemeIcon />
@@ -77,7 +77,7 @@ class UserCenter extends Component{
             <ListItemIcon ><StarIcon /></ListItemIcon>
             <ListItemText primary='我的收藏'   />
           </ListItem>
-          <Divider inset />
+          <Divider variant="inset" />
           <ListItem button >
             <ListItemIcon><LocalOfferIcon /></ListItemIcon>
             <ListItemText primary='我的标签'   />

@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
-import {createMuiTheme } from 'material-ui';
-import {purple,pink} from 'material-ui/colors';
+import {createMuiTheme } from '@material-ui/core';
+import {purple,pink} from '@material-ui/core/colors';
 import {COLORS} from '../store/constants';
 
-let colors=require('material-ui/colors')
+let colors=require('@material-ui/core/colors')
 //mode//0夜间，1白天
 
 export const styledTheme=({mode,themeColor})=>{
@@ -24,6 +24,7 @@ export const styledTheme=({mode,themeColor})=>{
       },
 
       typography: {
+        useNextVariants: true,
         htmlFontSize: 18,
       },
       overrides: {

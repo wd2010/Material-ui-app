@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as actions  from '../store/actions/home';
 import {Route, Switch ,Link} from 'react-router-dom';
 import styled from 'styled-components';
-import {Button } from 'material-ui';
+import {Button } from '@material-ui/core';
 import SwipeableViews from 'react-swipeable-views';
 import {autoPlay } from 'react-swipeable-views-utils';
 

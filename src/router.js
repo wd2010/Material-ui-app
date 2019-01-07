@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Route, Switch,withRouter } from 'react-router-dom';
 import {ThemeProvider} from 'styled-components';
-import { MuiThemeProvider,createMuiTheme} from 'material-ui';
+import { MuiThemeProvider,createMuiTheme} from '@material-ui/core';
 import {styledTheme} from './public/Theme';
 import App from './containers/App';
 

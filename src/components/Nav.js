@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
-import  {BottomNavigation, BottomNavigationAction, withStyles } from 'material-ui';
-import {Home as HomeIcon,Menu as MenuIcon ,Person as PersonIcon} from 'material-ui-icons';
+import  {BottomNavigation, BottomNavigationAction, withStyles } from '@material-ui/core';
+import {Home as HomeIcon,Menu as MenuIcon ,Person as PersonIcon} from '@material-ui/icons';
 import {push} from 'react-router-redux';
 import styled,{withTheme} from 'styled-components';
 

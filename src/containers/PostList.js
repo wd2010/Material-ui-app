@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import styled from 'styled-components';
-import {Button } from 'material-ui';
-import {Add as AddIcon} from 'material-ui-icons'
+import {Button } from '@material-ui/core';
+import {Add as AddIcon} from '@material-ui/icons'
 
 class PostList extends Component{
 
@@ -18,7 +18,7 @@ class PostList extends Component{
     return (
       <div>
 
-        <AddBtn fab mini color="primary" aria-label="add" ><AddIcon /></AddBtn>
+        <AddBtn fab="true" mini color="primary" aria-label="add" ><AddIcon /></AddBtn>
       </div>
     )
   }

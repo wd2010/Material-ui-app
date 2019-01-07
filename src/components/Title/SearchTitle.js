@@ -1,6 +1,6 @@
 import React from 'react';
-import {AppBar, Toolbar, Typography, Button, IconButton} from 'material-ui'
-import {Search as SearchIcon} from 'material-ui-icons';
+import {AppBar, Toolbar, Typography, Button, IconButton} from '@material-ui/core'
+import {Search as SearchIcon} from '@material-ui/icons';
 import styled from 'styled-components';
 import {connect} from 'react-redux'
 let SearchBar=styled(AppBar)`
@@ -9,7 +9,7 @@ let SearchBar=styled(AppBar)`
    } 
   `
 let SearchBtn=styled(Button).attrs({
-  color: props=>props.mode?'contrast':'default'
+  color: props=>props.mode?'primary':'default'
 })`
   &&{
     width: 100%;

@@ -1,6 +1,6 @@
 import React from 'react';
-import {AppBar, Toolbar, Typography, Button, IconButton} from 'material-ui'
-import {Menu as MenuIcon, Search as SearchIcon} from 'material-ui-icons';
+import {AppBar, Toolbar, Typography, Button, IconButton} from '@material-ui/core'
+import {Menu as MenuIcon, Search as SearchIcon} from '@material-ui/icons';
 import styled from 'styled-components';
 import {Switch,Route} from 'react-router-dom';
 import SearchTitle from './SearchTitle';

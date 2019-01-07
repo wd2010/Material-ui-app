@@ -1,6 +1,6 @@
 import React from 'react';
-import {AppBar, Toolbar, Typography, Button, IconButton} from 'material-ui'
-import {Menu as MenuIcon, MoreVert as MoreVertIcon} from 'material-ui-icons';
+import {AppBar, Toolbar, Typography, Button, IconButton} from '@material-ui/core'
+import {Menu as MenuIcon, MoreVert as MoreVertIcon} from '@material-ui/icons';
 import styled from 'styled-components';
 
 const UserTitle=({style})=>{
