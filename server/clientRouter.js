@@ -20,7 +20,7 @@ import { SheetsRegistry } from 'react-jss/lib/jss';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
 import preset from 'jss-preset-default';
-import createGenerateClassName from 'material-ui/styles/createGenerateClassName';
+import createGenerateClassName from '@material-ui/core/styles/createGenerateClassName';
 //提取styled-componnets样式
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
 

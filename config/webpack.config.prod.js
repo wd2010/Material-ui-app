@@ -12,7 +12,7 @@ const rootPath=path.join(__dirname,'../');
 const prodConfig={
   context: path.join(rootPath,'./src'),
   entry: {
-    client:'./Index.js',
+    client:'./index.js',
     vendors:['react','react-dom','react-loadable','react-redux','redux','react-router-dom','react-router-redux','redux-thunk','redux-saga'],
   },
   output:{
@@ -35,7 +35,7 @@ const prodConfig={
           loader:'babel-loader',
           options:{
             presets: ['env', 'react', 'stage-0'],
-            plugins: ['transform-runtime', 'add-module-exports',["direct-import", ["material-ui", 'material-ui-icons','history']]],
+            plugins: ['transform-runtime', 'add-module-exports',["direct-import", ["@material-ui/core", '@material-ui/icons','history']]],
             cacheDirectory: true,
           }
         }
@@ -92,7 +92,7 @@ const prodConfig={
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new HtmlWebpackPlugin({
-      title:'yyy',
+      title:'test',
       filename:'index.html',
       template:'./index.ejs',
     }),
