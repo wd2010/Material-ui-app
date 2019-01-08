@@ -4,9 +4,9 @@ require('babel-register')({
   presets: ['env', 'react', 'stage-0'],
   plugins: ["react-loadable/babel",'syntax-dynamic-import',"dynamic-import-node"]
 });
+require('./app.js');
 
-
-const app=require('./app.js').default,
+/*const app=require('./app.js').default,
   clientRouter=require('./clientRouter.js').default,
   port = process.env.port || 3002,
   staticCache  = require("koa-static-cache"),
@@ -27,6 +27,6 @@ app.use(clientRouter);
 console.log(`\n==> 🌎  Listening on port ${port}. Open up http://172.0.0.1:${port}/ in your browser.\n`)
 Loadable.preloadAll().then(() => {
   app.listen(port)
-})
+})*/
 
 

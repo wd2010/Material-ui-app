@@ -3,17 +3,17 @@ import {Provider} from 'react-redux';
 import {renderToString} from 'react-dom/server';
 import {createMemoryHistory} from 'history'
 import { getBundles } from 'react-loadable/webpack';
-import stats from '../dist/react-loadable.json';
+import stats from '../../dist/react-loadable.json';
 import Helmet from 'react-helmet';
 import {matchPath} from 'react-router-dom';
 import { matchRoutes } from 'react-router-config';
 import path from 'path';
 import fs from 'fs'
 import Loadable from 'react-loadable';
-import configureStore from '../src/store/configureStore';
-import routesThunk from '../src/store/routesThunk';
-import Routers from '../src/router';
-import rootReducer from '../src/store/reducers'
+import configureStore from '../../src/store/configureStore';
+import routesThunk from '../../src/store/routesThunk';
+import Routers from '../../src/router';
+import rootReducer from '../../src/store/reducers/index'
 import  {ConnectedRouter}  from 'react-router-redux';
 //提取material-ui样式
 import { SheetsRegistry } from 'react-jss/lib/jss';
@@ -91,8 +91,8 @@ const makeup=(ctx,store,html)=>{
 }
 
 
-const clientRouter=async(ctx,next)=>{
-  let html=fs.readFileSync(path.join(path.resolve(__dirname,'../dist'),'index.html'),'utf-8');
+const ssr=async(ctx, next)=>{
+  let html=fs.readFileSync(path.join(path.resolve(__dirname,'../../dist'),'index.html'),'utf-8');
   let {store}=configureStore(rootReducer);
 
 
@@ -110,5 +110,5 @@ const clientRouter=async(ctx,next)=>{
   await next()
 }
 
-export default clientRouter;
+export default ssr;
 
