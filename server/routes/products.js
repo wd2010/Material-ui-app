@@ -1,7 +1,8 @@
-let router = require('koa-router')();
+import Router from 'koa-router';
+let router = new Router;
 
 router.get('/products',async (ctx,next)=>{
   ctx.body='products html'
 })
 
-module.exports = router;
+export default router;

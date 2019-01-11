@@ -18,7 +18,7 @@ class User extends Component{
         <Container type='title' hide={titleHide}>
           <ReturnTitle />
         </Container>
-        <h1>User页面</h1>
+        <h1>User11134234页面</h1>
         <Container type='menu' hide={navHide}>
           <Nav />
         </Container>

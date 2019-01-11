@@ -1,8 +1,7 @@
-let router = require('koa-router')();
+import {getUserInfo, getAllUser} from '../controllers/user.js';
+import Router from 'koa-router';
+let router = new Router;
 
-router.get('/user',async (ctx,next)=>{
-  console.log('0000000',ctx)
-  ctx.body='user html'
-})
-
-module.exports = router;
+router.get('/user/:username', getUserInfo)
+router.get('/users', getAllUser)
+export default router;

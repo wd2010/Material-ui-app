@@ -6,8 +6,11 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const { ReactLoadablePlugin } =require('react-loadable/webpack') ;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // const OfflinePlugin = require('offline-plugin');
 const rootPath=path.join(__dirname,'../');
+
+const generateAnalyzer=process.env.npm_config_report;// --report
 
 const prodConfig={
   context: path.join(rootPath,'./src'),
@@ -103,7 +106,8 @@ const prodConfig={
     new ReactLoadablePlugin({
       filename: path.join(rootPath,'./dist/react-loadable.json'),
     }),
-  ]
+    generateAnalyzer && new BundleAnalyzerPlugin(),
+  ].filter(p => p)
 }
 
-module.exports=prodConfig
+module.exports=prodConfig;

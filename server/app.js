@@ -9,7 +9,7 @@ import staticCache from 'koa-static-cache';
 import Loadable from 'react-loadable'
 import config  from './config/default';
 //const config =require('config-lite')(__dirname) ;
-
+import {veryUser} from './middleware/user'
 const app=new Koa();
 
 //log4js.configure('./config/log4js.json');
@@ -36,6 +36,8 @@ app.use(staticCache (path.resolve(__dirname,'../dist'),{
   maxAge: 365 * 24 * 60 * 60,
   gzip:true
 }));
+//验证用户是否登录
+app.use(veryUser)
 
 app.use(routes.routes());
 

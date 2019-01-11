@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Route, Switch,withRouter } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import styled from 'styled-components';
+
 const Loading=(props)=>
   <div>Loading...</div>
 

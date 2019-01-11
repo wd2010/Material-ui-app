@@ -1,7 +1,7 @@
 import {SWITCH_THEME,CHANGE_THEME} from '../constants';
 const initConfig={
-  mode:1,//0夜间，1白天
-  themeColor: 'pink' ,
+  mode:0,//0夜间，1白天
+  themeColor: 'red' ,
 }
 export const Config=(state=initConfig,action)=>{
   switch(action.type){

@@ -65,3 +65,12 @@ export const UserFollow=mongoose.model('UserFollow',UserFollowSchema)
 export const Tag=mongoose.model('Tag',TagSchema)
 export const PostTagRelation=mongoose.model('PostTagRelation',PostTagSchema)
 
+
+import userInitData from '../initData/user'
+User.findOne((err, data) => {
+  if(!data){
+    userInitData.forEach(async userInfo=>{
+      await User(userInfo).save();
+    })
+  }
+})

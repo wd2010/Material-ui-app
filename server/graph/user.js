@@ -13,11 +13,11 @@ let user=`
 export let typeDefs=`
   input UserInput {
     ${user}
-    password: String
+    password: String!
   }
   type User {
     ${user}
-    _id: String
+
     followers: Int
     followings: Int
     postCount: Int
@@ -65,6 +65,7 @@ export let resolvers={
 
       if(userId || username){
         let userInfo=await User.findOne({$or:[{username:eval(`/${username}/`)},{_id: userId}]});
+        console.log(userInfo)
         return (userInfo)
       }else{
         throw('username和userId必填一个')
